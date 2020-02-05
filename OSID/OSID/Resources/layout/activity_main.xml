@@ -17,6 +17,16 @@
         android:layout_marginTop="75dp"
         android:textSize="35dp"
     />
+     <TextView
+        android:id="@+id/voltageText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="0 v"
+        android:textColor="@android:color/black"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:textSize="20dp"
+    />
     <ToggleButton
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

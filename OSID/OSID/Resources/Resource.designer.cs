@@ -3788,10 +3788,13 @@ namespace OSID
 			public const int visible = 2131230909;
 			
 			// aapt resource value: 0x7F0800BE
-			public const int withText = 2131230910;
+			public const int voltageText = 2131230910;
 			
 			// aapt resource value: 0x7F0800BF
-			public const int wrap_content = 2131230911;
+			public const int withText = 2131230911;
+			
+			// aapt resource value: 0x7F0800C0
+			public const int wrap_content = 2131230912;
 			
 			static Id()
 			{

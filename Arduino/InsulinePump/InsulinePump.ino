@@ -22,8 +22,8 @@ void setup() {
 
 void loop() {
   uint8_t numero_canal;
-  if ( radio.available() )
- {    
+  if (radio.available() )
+  {    
      //Leemos los datos y los guardamos en la variable datos[]
      radio.read(datos,sizeof(datos));
      
@@ -34,13 +34,13 @@ void loop() {
      Serial.print("Dato1= " );
      Serial.print(datos[1]);
      Serial.println(" V, ");
-     
+    
  }
- float f = datos[1];
- String fstring = String(f) + "|";
- writeString(fstring);
+  float f = datos[1];
+     String fstring = String(f) + "|";
+     writeString(fstring);
 
- delay(1000);
+     delay(1000);
 }
 void writeString(String stringData) { // Used to serially push out a String with Serial.write()
 

@@ -27,7 +27,8 @@ namespace OSID
         private static UUID MY_UUID = UUID.FromString("00001101-0000-1000-8000-00805F9B34FB");
 
         TextView glucoseText;
-   
+        TextView voltageText;
+
         ToggleButton conectar;
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -37,6 +38,7 @@ namespace OSID
             SetContentView(Resource.Layout.activity_main);
 
             glucoseText = FindViewById<TextView>(Resource.Id.glucoseText);
+            voltageText = FindViewById<TextView>(Resource.Id.voltageText);
             conectar = FindViewById<ToggleButton>(Resource.Id.toggleButton1);
 
             conectar.CheckedChange += tgConnect_HandleCheckedChange;
@@ -130,7 +132,8 @@ namespace OSID
             }
 
             //glucoseText.Text = string.Format("{0:N3}", CalculateGlucoseConcentration(ClearData(beginListenForData()))) + " mg/dL";
-            glucoseText.Text = CalculateGlucoseConcentration(ClearData(beginListenForData())) + " mg/dL";
+            voltageText.Text = beginListenForData();
+            glucoseText.Text = CalculateGlucoseConcentration(ClearData(voltageText.Text)) + " mg/dL";
         }
      
         //Evento para inicializar el hilo que escuchara las peticiones del bluetooth
