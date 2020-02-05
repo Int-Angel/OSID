@@ -8,6 +8,7 @@ using System.IO;
 using Java.Util;
 using System.Threading.Tasks;
 using System;
+using System.Text;
 
 namespace OSID
 {
@@ -37,8 +38,6 @@ namespace OSID
 
             glucoseText = FindViewById<TextView>(Resource.Id.glucoseText);
             conectar = FindViewById<ToggleButton>(Resource.Id.toggleButton1);
-
-            //conectar.Chec += tgConnect_HandleCheckedChange;
 
             conectar.CheckedChange += tgConnect_HandleCheckedChange;
 
@@ -78,7 +77,7 @@ namespace OSID
             if (e.IsChecked)
             {
                 //si se activa el toggle button se incial el metodo de conexion
-                Connect();
+                ConnectAsync();
             }
             else
             {
@@ -98,7 +97,7 @@ namespace OSID
         }
 
         //Evento de conexion al Bluetooth
-        public void Connect()
+        public async Task ConnectAsync()
         {
             //Iniciamos la conexion con el arduino
             BluetoothDevice device = mBluetoothAdapter.GetRemoteDevice(address);
@@ -111,7 +110,8 @@ namespace OSID
                 //Inicamos el socket de comunicacion con el arduino
                 btSocket = device.CreateRfcommSocketToServiceRecord(MY_UUID);
                 //Conectamos el socket
-                btSocket.Connect();
+                //btSocket.Connect();
+                await btSocket.ConnectAsync();
                 System.Console.WriteLine("Conexion Correcta");
             }
             catch (System.Exception e)
@@ -128,16 +128,13 @@ namespace OSID
                 }
                 System.Console.WriteLine("Socket Creado");
             }
-            //Una vez conectados al bluetooth mandamos llamar el metodo que generara el hilo
-            //que recibira los datos del arduino
-            beginListenForData();
-            //NOTA envio la letra e ya que el sketch esta configurado para funcionar cuando
-            //recibe esta letra.
-            //  dataToSend = new Java.Lang.String("e");
-            //writeData(dataToSend);
+
+            //glucoseText.Text = string.Format("{0:N3}", CalculateGlucoseConcentration(ClearData(beginListenForData()))) + " mg/dL";
+            glucoseText.Text = CalculateGlucoseConcentration(ClearData(beginListenForData())) + " mg/dL";
         }
+     
         //Evento para inicializar el hilo que escuchara las peticiones del bluetooth
-        public void beginListenForData()
+        public string  beginListenForData()
         {
             //Extraemos el stream de entrada
             try
@@ -150,44 +147,34 @@ namespace OSID
             }
             //Creamos un hilo que estara corriendo en background el cual verificara si hay algun dato
             //por parte del arduino
-            string resultado = "";
-            Task.Factory.StartNew(() => {
-                //declaramos el buffer donde guardaremos la lectura
-                byte[] buffer = new byte[1024];
-                //declaramos el numero de bytes recibidos
-                int bytes;
-                while (true)
-                {
-                    try
-                    {
-                        //leemos el buffer de entrada y asignamos la cantidad de bytes entrantes
-                        bytes = inStream.Read(buffer, 0, buffer.Length);
-                        //Verificamos que los bytes contengan informacion
-                        if (bytes > 0)
-                        {
-                            //Corremos en la interfaz principal
-                            RunOnUiThread(() => {
-                                //Convertimos el valor de la informacion llegada a string
-                                string valor = System.Text.Encoding.ASCII.GetString(buffer);
-                                //Agregamos a nuestro label la informacion llegada
-                                //Result.Text = Result.Text + "\n" + valor;
-                                resultado += "\n" + valor; 
-                            });
-                        }
-                    }
-                    catch (Java.IO.IOException)
-                    {
-                        //En caso de error limpiamos nuestra label y cortamos el hilo de comunicacion
-                        RunOnUiThread(() => {
-                            //Result.Text = string.Empty;
-                            resultado = string.Empty;
-                        });
-                        break;
-                    }
-                }
-            });
+            byte[] buffer = new byte[4];
+            //string resultado = "";
+            inStream.Read(buffer, 0, buffer.Length);
 
-            glucoseText.Text = resultado;
+           return Encoding.ASCII.GetString(buffer);
+        }
+        public float ClearData(string data)
+        {
+            // transformar string to float y cortar los datos hasta donde aparezca el caracter "|"
+            return float.Parse(data);
+        }
+        public double CalculateGlucoseConcentration(float voltage)
+        {
+            //implementar algoritmo
+            //(((2347110.773 * (18.06302774 * 0.001) ** (value) + (2 * (4.65 - value))) / (8 * value)) ** 2.2) + (10 * value) + 30 - value
+            //volatge  = 2.56
+            /*double a = 2347110.773 * (18.06302774 * 0.001);//42395.927
+            double b = (2 * (4.65 - voltage));//4.18
+            double c = Math.Pow(a, voltage);// 7.0 x10 ala 11
+            double d = c + b;
+            double e = (8 * voltage);//
+            double f = d / e;
+            double g = Math.Pow(f, 2.2f);
+            double h = (10 * voltage);
+            double i = 30 - voltage;
+            double result = g + h + i;*/
+            //Math.Pow(((2347110.773 * Math.Pow((18.06302774 * 0.001), (voltage)) + (2 * (4.65 - voltage))) / (8 * voltage)) ,2.2f) + (10 * voltage) + 30 - voltage
+            return Math.Round(Math.Pow(((2347110.773 * Math.Pow((18.06302774 * 0.001), (voltage)) + (2 * (4.65 - voltage))) / (8 * voltage)), 2.2f) + (10 * voltage) + 30 - voltage);
         }
     }
 }
