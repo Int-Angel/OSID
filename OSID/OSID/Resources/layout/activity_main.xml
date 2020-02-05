@@ -1,7 +1,30 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-</RelativeLayout>
+     
+    <TextView
+        android:id="@+id/glucoseText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="0 mg/dL"
+        android:textColor="@android:color/black"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="75dp"
+        android:textSize="35dp"
+    />
+    <ToggleButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/toggleButton1"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
+        android:layout_marginTop="50dp"
+    />
+   
+
+</LinearLayout>
