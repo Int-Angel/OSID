@@ -88,13 +88,16 @@ void loop() {
   
   datos[0] = current_voltage_0;
   datos[1] = current_voltage_1;
-  bool ok = radio.write(datos, sizeof(datos));
+  bool ok = false;
+ do{
+   ok = radio.write(datos, sizeof(datos));
   delay(1000);
   if(ok){
     Serial.println("DATO ENVIADO");
   }else{
     Serial.println("ERROR AL ENVIAR EL DATO");
   }
+ }while(!ok);
   
   display_time();
   while(1) {

@@ -240,7 +240,7 @@ namespace OSID
         }
         public double CalculateGlucoseConcentration(float voltage)
         {
-            return Math.Round(Math.Pow(((2347110.773 * Math.Pow((18.06302774 * 0.001), (voltage)) + (2 * (4.65 - voltage))) / (8 * voltage)), 2.2f) + (10 * voltage) + 30 - voltage);
+            return (Math.Round(Math.Pow(((2347110.773 * Math.Pow((18.06302774 * 0.001), (voltage)) + (2 * (4.65 - voltage))) / (8 * voltage)), 2.2f) + (10 * voltage) + 30 - voltage)) +16;
         }
 
         
