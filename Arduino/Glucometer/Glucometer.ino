@@ -16,7 +16,7 @@ int strip_detect = 2;
 int current = 0;
 
 // measurement starts if transimpedance amp output voltage > threshold
-float threshold = 2.5; 
+float threshold = 2.8; 
 
 RTC_Millis RTC;
 
