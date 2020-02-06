@@ -43,7 +43,7 @@ namespace OSID
 
             conectar.CheckedChange += tgConnect_HandleCheckedChange;
 
-            CheckBt();
+            CheckBluethoot();
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
@@ -54,7 +54,7 @@ namespace OSID
 
 
         //Metodo de verificacion del sensor Bluetooth
-        private void CheckBt()
+        private void CheckBluethoot()
         {
             //asignamos el sensor bluetooth con el que vamos a trabajar
             mBluetoothAdapter = BluetoothAdapter.DefaultAdapter;
