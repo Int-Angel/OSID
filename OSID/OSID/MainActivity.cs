@@ -28,8 +28,8 @@ namespace OSID
 
         TextView glucoseText;
         TextView voltageText;
-
         ToggleButton conectar;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -45,6 +45,8 @@ namespace OSID
 
             CheckBluethoot();
         }
+
+
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -104,7 +106,7 @@ namespace OSID
             //Iniciamos la conexion con el arduino
             BluetoothDevice device = mBluetoothAdapter.GetRemoteDevice(address);
             System.Console.WriteLine("Conexion en curso" + device);
-
+            
             //Indicamos al adaptador que ya no sea visible
             mBluetoothAdapter.CancelDiscovery();
             try
@@ -132,10 +134,72 @@ namespace OSID
             }
 
             //glucoseText.Text = string.Format("{0:N3}", CalculateGlucoseConcentration(ClearData(beginListenForData()))) + " mg/dL";
-            voltageText.Text = beginListenForData();
-            glucoseText.Text = CalculateGlucoseConcentration(ClearData(voltageText.Text)) + " mg/dL";
+            //voltageText.Text = beginListenForData();
+            //glucoseText.Text = CalculateGlucoseConcentration(ClearData(voltageText.Text)) + " mg/dL";
+
+            //Extraemos el stream de entrada
+            try
+            {
+                inStream = btSocket.InputStream;
+            }
+            catch (System.IO.IOException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            if (btSocket != null && btSocket.IsConnected)
+            {
+                Task t = new Task(() => Listen(inStream));
+                t.Start();
+            }
         }
-     
+
+        private async void Listen(Stream inStream)
+        {
+            bool Listening = true;
+
+            byte[] uintBuffer = new byte[sizeof(uint)]; // This reads the first 4 bytes which form an uint that indicates the length of the string message.
+            byte[] textBuffer; // This will contain the string message.
+
+            // Keep listening to the InputStream while connected.
+            while (Listening)
+            {
+                try
+                {
+                    // This one blocks until it gets 4 bytes.
+                    //await inStream.ReadAsync(uintBuffer, 0, uintBuffer.Length);
+                    //uint readLength = BitConverter.ToUInt32(uintBuffer, 0);
+
+                    //textBuffer = new byte[readLength];
+                    // Here we know for how many bytes we are looking for.
+                    //await inStream.ReadAsync(textBuffer, 0, (int)readLength);
+
+                    //string s = Encoding.UTF8.GetString(textBuffer);
+                    //CreateMessage("Received: " + s);
+
+                    byte[] buffer = new byte[4];
+                    //string resultado = "";
+                    inStream.Read(buffer, 0, buffer.Length);
+                    if (!Encoding.ASCII.GetString(buffer).Equals("0.0|"))
+                    {
+                        voltageText.Text = Encoding.ASCII.GetString(buffer);
+                       // glucoseText.Text = CalculateGlucoseConcentration(ClearData(voltageText.Text)) + " mg/dL";
+                    }
+                    else
+                    {
+                        glucoseText.Text = "Esperando...";
+                        voltageText.Text = "0 v";
+                    }
+                }
+                catch (Java.IO.IOException e)
+                {
+                    //CreateMessage("Error: " + e.Message);
+                    Listening = false;
+                    break;
+                }
+            }
+        }
+
         //Evento para inicializar el hilo que escuchara las peticiones del bluetooth
         public string  beginListenForData()
         {
@@ -159,24 +223,16 @@ namespace OSID
         public float ClearData(string data)
         {
             // transformar string to float y cortar los datos hasta donde aparezca el caracter "|"
-            return float.Parse(data);
+            try
+            {
+                return float.Parse(data);
+            }catch(Exception e)
+            {
+                return 0;
+            }
         }
         public double CalculateGlucoseConcentration(float voltage)
         {
-            //implementar algoritmo
-            //(((2347110.773 * (18.06302774 * 0.001) ** (value) + (2 * (4.65 - value))) / (8 * value)) ** 2.2) + (10 * value) + 30 - value
-            //volatge  = 2.56
-            /*double a = 2347110.773 * (18.06302774 * 0.001);//42395.927
-            double b = (2 * (4.65 - voltage));//4.18
-            double c = Math.Pow(a, voltage);// 7.0 x10 ala 11
-            double d = c + b;
-            double e = (8 * voltage);//
-            double f = d / e;
-            double g = Math.Pow(f, 2.2f);
-            double h = (10 * voltage);
-            double i = 30 - voltage;
-            double result = g + h + i;*/
-            //Math.Pow(((2347110.773 * Math.Pow((18.06302774 * 0.001), (voltage)) + (2 * (4.65 - voltage))) / (8 * voltage)) ,2.2f) + (10 * voltage) + 30 - voltage
             return Math.Round(Math.Pow(((2347110.773 * Math.Pow((18.06302774 * 0.001), (voltage)) + (2 * (4.65 - voltage))) / (8 * voltage)), 2.2f) + (10 * voltage) + 30 - voltage);
         }
     }

@@ -10,13 +10,18 @@ const byte address[6] = "00001";
 
 RF24 radio(CE_PIN, CSN_PIN);
 float datos[2];
-
+bool sendData;
 void setup() {
   Serial.begin(9600);
   radio.begin();
   radio.openReadingPipe(0, address);
   radio.setPALevel(RF24_PA_MIN);
   radio.startListening();
+
+
+  sendData = false;
+  datos[0] = 0;
+  datos[1] = 0;
 
 }
 
@@ -36,11 +41,15 @@ void loop() {
      Serial.println(" V, ");
     
  }
-  float f = datos[1];
+ if(!sendData && datos[1] != 0){
+  
+     float f = datos[1];
      String fstring = String(f) + "|";
      writeString(fstring);
+     sendData = true;
+     
+   }
 
-     delay(1000);
 }
 void writeString(String stringData) { // Used to serially push out a String with Serial.write()
 
