@@ -9,6 +9,7 @@ using Java.Util;
 using System.Threading.Tasks;
 using System;
 using System.Text;
+using static Android.Bluetooth.BluetoothClass;
 
 namespace OSID
 {
@@ -153,7 +154,7 @@ namespace OSID
                 t.Start();
             }
         }
-
+        bool nose = false;
         private async void Listen(Stream inStream)
         {
             bool Listening = true;
@@ -177,13 +178,19 @@ namespace OSID
                     //string s = Encoding.UTF8.GetString(textBuffer);
                     //CreateMessage("Received: " + s);
 
-                    byte[] buffer = new byte[4];
+                    byte[] buffer1 = new byte[1];
                     //string resultado = "";
-                    inStream.Read(buffer, 0, buffer.Length);
-                    if (!Encoding.ASCII.GetString(buffer).Equals("0.0|"))
+                    inStream.Read(buffer1, 0, buffer1.Length);
+                    string result = Encoding.ASCII.GetString(buffer1);
+                    if (!result.Equals("H") && !nose)
                     {
+                        // esperarse 1 seg
+                        //await Task.Delay(1000);
+                        byte[] buffer = new byte[4];
+                        inStream.Read(buffer, 0, buffer.Length);
                         voltageText.Text = Encoding.ASCII.GetString(buffer);
-                       // glucoseText.Text = CalculateGlucoseConcentration(ClearData(voltageText.Text)) + " mg/dL";
+                        nose = true;
+                        // glucoseText.Text = CalculateGlucoseConcentration(ClearData(voltageText.Text)) + " mg/dL";
                     }
                     else
                     {
@@ -235,5 +242,7 @@ namespace OSID
         {
             return Math.Round(Math.Pow(((2347110.773 * Math.Pow((18.06302774 * 0.001), (voltage)) + (2 * (4.65 - voltage))) / (8 * voltage)), 2.2f) + (10 * voltage) + 30 - voltage);
         }
+
+        
     }
 }

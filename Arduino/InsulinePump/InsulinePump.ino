@@ -44,11 +44,19 @@ void loop() {
  if(!sendData && datos[1] != 0){
   
      float f = datos[1];
-     String fstring = String(f) + "|";
+     
+     
+     String fstring = String(f);
      writeString(fstring);
      sendData = true;
+     Serial.print("enviado a bluethoot");
      
+   }else if(!sendData){
+    
+    writeString("H");
+   
    }
+   
 
 }
 void writeString(String stringData) { // Used to serially push out a String with Serial.write()
