@@ -33,12 +33,12 @@ void loop() {
      radio.read(datos,sizeof(datos));
      
      //reportamos por el puerto serial los datos recibidos
-     Serial.print("Dato0= " );
-     Serial.print(datos[0]);
-     Serial.println(" V, ");
-     Serial.print("Dato1= " );
-     Serial.print(datos[1]);
-     Serial.println(" V, ");
+   //  Serial.print("Dato0= " );
+     //Serial.print(datos[0]);
+     //Serial.println(" V, ");
+     //Serial.print("Dato1= " );
+     //Serial.print(datos[1]);
+     //Serial.println(" V, ");
     
  }
  if(!sendData && datos[1] != 0){
@@ -49,7 +49,7 @@ void loop() {
      String fstring = String(f);
      writeString(fstring);
      sendData = true;
-     Serial.print("enviado a bluethoot");
+     //Serial.print("enviado a bluethoot");
      
    }else if(!sendData){
     

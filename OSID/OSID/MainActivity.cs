@@ -187,7 +187,7 @@ namespace OSID
                         // esperarse 1 seg
                         //await Task.Delay(1000);
                         byte[] buffer = new byte[4];
-                        inStream.Read(buffer, 0, buffer.Length);
+                        inStream.Read(buffer, 1, buffer.Length);
                         voltageText.Text = Encoding.ASCII.GetString(buffer);
                         nose = true;
                         // glucoseText.Text = CalculateGlucoseConcentration(ClearData(voltageText.Text)) + " mg/dL";
