@@ -7,15 +7,17 @@
 #define CE_PIN 7
 #define CSN_PIN 8
 
-const byte address[6] = "00001";
-
-double counter = 0;
-const unsigned long SECOND = 1000;
-const unsigned long HOUR = 3600*SECOND;
-
+//---------------INYECCION-----------------------//
 unsigned long startMillis;
 unsigned long currentMillis;
+const unsigned long SECOND = 1000;
+const unsigned long HOUR = 10*SECOND;//3600*SECOND//;
+float unidades = 0.005;
+double counter = 0;
 RTC_Millis RTC;
+
+//-----------------------------------------------//
+const byte address[6] = "00001";
 
 RF24 radio(CE_PIN, CSN_PIN);
 float datos[2];
@@ -31,70 +33,55 @@ void setup() {
   sendData = false;
   datos[0] = 0;
   datos[1] = 0;
-  RTC.begin(DateTime(__DATE__, __TIME__));
-  bool inyeccion = false;
+  startMillis = millis();
 }
 
 void loop() {
   uint8_t numero_canal;
   if (radio.available() )
-<<<<<<< Updated upstream
   {    
      //Leemos los datos y los guardamos en la variable datos[]
      radio.read(datos,sizeof(datos));
-     
-     //reportamos por el puerto serial los datos recibidos
-     Serial.print("Dato0= " );
-     Serial.print(datos[0]);
-     Serial.println(" V, ");
-     Serial.print("Dato1= " );
-     Serial.print(datos[1]);
-     Serial.println(" V, ");
-    
  }
  if(!sendData && datos[1] != 0){
   
      float f = datos[1];
-     String fstring = String(f) + "|";
+     String fstring = String(f);
      writeString(fstring);
      sendData = true;
+     //Serial.print("enviado a bluethoot");
      
-   }
-=======
-  {
-    //Leemos los datos y los guardamos en la variable datos[]
-    radio.read(datos, sizeof(datos));
-  }
-  if (!sendData && datos[1] != 0)
-  {
-
-    float f = datos[1];
-    String fstring = String(f);
-    writeString(fstring);
-    sendData = true;
-    //Serial.print("enviado a bluethoot");
-
-  }
-  else if (!sendData)
+   }else if(!sendData){
     writeString("H");
->>>>>>> Stashed changes
+   
+   }
 
-    //---------------------INYECCION DE INSULINA--------------------------//
+  currentMillis = millis();
+
+  //-----------------------------------------------------------------------//
+    if (currentMillis - startMillis >= HOUR)
+    {
+      display_time();//Se muestra la fecha y hora del inicio de la inyeccion
+      if(unidades!=0)
+      {
+        Serial.print("Inyeccion iniciada: ");
+        Serial.println();
+        display_time();
+        InyectarInsulina(unidades); //Inyeccion
+        Serial.print("Inyeccion terminada: ");
+        display_time();
+      }
+      startMillis = millis(); //Reinicia el contador de tiempo
+    }
+    //------RECIBE EL NUMERO DE UNIDADES A INYECTAR DESDE LA APP----------//
     if(Serial.available())//Sí existe conexion a la app..
     {
       int unidades = Serial.read();//Recibe las unidades mandadas por la app
-      currentMillis = millis();
-      display_time();//Se muestra la fecha y hora del inicio de la inyeccion
-      InyectarInsulina(unidades); //Inyeccion
-      delay(1 * HOUR); //Esperar 1 Hora
     }
     //--------------------------------------------------------------------//
-}
-<<<<<<< Updated upstream
-void writeString(String stringData) { // Used to serially push out a String with Serial.write()
 
-  for (int i = 0; i < stringData.length(); i++)
-=======
+}
+
 
 void InyectarInsulina(float unidades)
 {
@@ -102,7 +89,6 @@ void InyectarInsulina(float unidades)
   int vueltas = pasos / 8;
 
   for (int i = 0; i <= vueltas; i++)
->>>>>>> Stashed changes
   {
     digitalWrite(3, HIGH);
     digitalWrite(4, LOW);
@@ -158,14 +144,21 @@ void InyectarInsulina(float unidades)
   }
 }
 
-void writeString(String stringData)
-{ // Used to serially push out a String with Serial.write()
-  
-  Serial.flush();//borra lo que se haya mandado anteriormente por el puerto serial
+
+
+
+void writeString(String stringData) { // Used to serially push out a String with Serial.write()
+Serial.flush();
   for (int i = 0; i < stringData.length(); i++)
+  {
     Serial.write(stringData[i]);   // Push each char 1 by 1 on each loop pass
-    
+  }
 }// end writeString
+
+
+
+
+
 
 void display_time() {
   DateTime now = RTC.now();
