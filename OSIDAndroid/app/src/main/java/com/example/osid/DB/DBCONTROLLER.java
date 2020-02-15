@@ -75,7 +75,7 @@ public class DBCONTROLLER {
         };
 
         Cursor cursor = database.query(
-                dbcreator.TABLA_INSULINE,
+                dbcreator.TABLA_USUARIO,
                 columnasAConsultar,
                 null,
                 null,

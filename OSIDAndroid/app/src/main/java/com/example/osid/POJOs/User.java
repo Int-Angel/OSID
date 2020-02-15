@@ -34,9 +34,26 @@ public class User {
     }
 
     public User(User user){
-
+        this.id = user.id;
+        this.edad = user.edad;
+        this.peso = user.peso;
+        this.basal = user.basal;
+        this.gender = user.gender;
+        this.nombre = user.nombre;
+        this.primerApellido = user.primerApellido;
+        this.segundoApellido = user.segundoApellido;
     }
 
+    public void  copyUser(User user) {
+        this.id = user.id;
+        this.edad = user.edad;
+        this.peso = user.peso;
+        this.basal = user.basal;
+        this.gender = user.gender;
+        this.nombre = user.nombre;
+        this.primerApellido = user.primerApellido;
+        this.segundoApellido = user.segundoApellido;
+    }
     public int getId() {
         return id;
     }

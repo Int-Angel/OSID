@@ -8,6 +8,7 @@
     android:background="@color/white"
     tools:context=".informacion_personal">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -254,6 +255,13 @@
             </RadioGroup>
 
         </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/test"
+            android:textColor="@color/black"
+            />
     </LinearLayout>
 
 
