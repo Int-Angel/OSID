@@ -33,6 +33,10 @@ public class User {
         this.segundoApellido = segundoApellido;
     }
 
+    public User(User user){
+
+    }
+
     public int getId() {
         return id;
     }
