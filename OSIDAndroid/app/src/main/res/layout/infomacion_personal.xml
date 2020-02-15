@@ -239,17 +239,18 @@
                 android:id="@+id/radioGroupID"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent">
-                    <RadioButton
-                        android:id="@+id/masculinoButtonID"
-                        android:layout_width="wrap_content"
-                        android:text="Masculino"
-                        android:layout_height="wrap_content"></RadioButton>
-                    <RadioButton
-                        android:id="@+id/femeninoButtonID"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Femenino">
-                    </RadioButton>
+
+                <RadioButton
+                    android:id="@+id/masculinoButtonID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Masculino"></RadioButton>
+
+                <RadioButton
+                    android:id="@+id/femeninoButtonID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Femenino"></RadioButton>
             </RadioGroup>
 
         </LinearLayout>
