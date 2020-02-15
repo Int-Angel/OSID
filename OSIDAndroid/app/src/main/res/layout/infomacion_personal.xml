@@ -193,15 +193,14 @@
             android:textColor="@color/black">
 
             <EditText
+                android:id="@+id/basal_lbl"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/basal_lbl"
                 android:hint="Basal"
-                android:inputType="textPassword"
+                android:inputType="numberDecimal"
                 android:maxLines="1"
                 android:paddingTop="10dp"
                 android:textColor="@color/black"
-
                 android:textCursorDrawable="@drawable/color_cursor"
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -268,7 +267,4 @@
         android:textAlignment="center"
         android:layout_margin="19.3dp"
         android:text="Continuar"/>
-
-
-
 </RelativeLayout>

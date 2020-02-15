@@ -8,6 +8,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.example.osid.DB.DBCONTROLLER;
 import com.example.osid.POJOs.User;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,9 +23,8 @@ public class informacion_personal extends AppCompatActivity implements RadioGrou
     EditText basalEdit;
     Button registerInfo;
     RadioGroup genderGroup;
-    RadioButton maleRadio, femaleRadio;
     String gender;
-
+    DBCONTROLLER dbcontroller;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,8 +38,6 @@ public class informacion_personal extends AppCompatActivity implements RadioGrou
         basalEdit = findViewById(R.id.basal_lbl);
         //---------------------------------------------------------//
         genderGroup = findViewById(R.id.radioGroupID);
-        maleRadio = findViewById(R.id.masculinoButtonID);
-        femaleRadio = findViewById(R.id.femeninoButtonID);
         genderGroup.setOnCheckedChangeListener(this);
 
         //---------------------------------------------------------//
@@ -53,22 +51,26 @@ public class informacion_personal extends AppCompatActivity implements RadioGrou
                 Toast.makeText(informacion_personal.this, "vientos", Toast.LENGTH_SHORT).show();
             }
         });
+
+        dbcontroller = new DBCONTROLLER(this);
     }
 
     private void RegisterUser()
     {
         User user = new User();
-        user.setNombre(nameEdit.toString());
-        user.setEdad(Integer.parseInt(ageEdit.toString()));
-        user.setPeso(Integer.parseInt(weightEdit.toString()));
-        user.setPrimerApellido(lastName1Edit.toString());
-        user.setSegundoApellido(lastName2Edit.toString());
-        user.setBasal(Integer.parseInt(basalEdit.toString()));
+        user.setNombre(nameEdit.getText().toString());
+        user.setEdad(Integer.parseInt(ageEdit.getText().toString()));
+        user.setPeso(Integer.parseInt(weightEdit.getText().toString()));
+        user.setPrimerApellido(lastName1Edit.getText().toString());
+        user.setSegundoApellido(lastName2Edit.getText().toString());
+        user.setBasal(Integer.parseInt(basalEdit.getText().toString()));
 
         if(gender == "Masculino")
             user.setGender(true);
         if(gender == "Femenino")
             user.setGender(false);
+
+        dbcontroller.InsertUser(user);
     }
 
     @Override
