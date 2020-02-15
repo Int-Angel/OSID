@@ -72,13 +72,14 @@
             android:textColor="@color/black">
 
             <EditText
+                android:id="@+id/name_lbl"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Nombre"
-                android:textAllCaps="false"
-                android:inputType="text"
+                android:inputType="textPersonName|textCapWords"
                 android:maxLines="1"
                 android:paddingTop="10dp"
+                android:textAllCaps="false"
                 android:textColor="@color/black"
                 android:textCursorDrawable="@drawable/color_cursor"
                 android:textSize="14sp" />
@@ -89,7 +90,7 @@
             style="@style/StyledTilEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="5dp"
             android:layout_marginLeft="28.7dp"
             android:layout_marginRight="28.7dp"
             android:textColor="@color/black">
@@ -97,11 +98,12 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/lastName1_lbl"
                 android:hint="Primer Apellido"
-                android:textAllCaps="false"
-                android:inputType="text"
+                android:inputType="textPersonName|textCapWords"
                 android:maxLines="1"
                 android:paddingTop="10dp"
+                android:textAllCaps="false"
                 android:textColor="@color/black"
                 android:textCursorDrawable="@drawable/color_cursor"
                 android:textSize="14sp" />
@@ -112,7 +114,7 @@
             style="@style/StyledTilEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="5dp"
             android:layout_marginLeft="28.7dp"
             android:layout_marginRight="28.7dp"
             android:textColor="@color/black">
@@ -120,11 +122,12 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/lastName2_lbl"
                 android:hint="Segundo Apellido"
-                android:textAllCaps="false"
-                android:inputType="text"
+                android:inputType="textPersonName|text|textCapWords"
                 android:maxLines="1"
                 android:paddingTop="10dp"
+                android:textAllCaps="false"
                 android:textColor="@color/black"
                 android:textCursorDrawable="@drawable/color_cursor"
                 android:textSize="14sp" />
@@ -135,7 +138,7 @@
             style="@style/StyledTilEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="5dp"
             android:layout_marginLeft="28.7dp"
             android:layout_marginRight="28.7dp"
             android:textColor="@color/black">
@@ -143,11 +146,12 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/age_lbl"
                 android:hint="Edad"
+                android:inputType="number"
+                android:maxLines="1"
+                android:paddingTop="10dp"
                 android:textAllCaps="false"
-                android:inputType="textEmailAddress"
-                android:maxLines="1"
-                android:paddingTop="10dp"
                 android:textColor="@color/black"
                 android:textCursorDrawable="@drawable/color_cursor"
                 android:textSize="14sp" />
@@ -159,7 +163,7 @@
             style="@style/StyledTilEditText"
             android:layout_marginLeft="28.7dp"
             android:layout_marginRight="28.7dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/black">
@@ -167,8 +171,9 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/weight_lbl"
                 android:hint="Peso"
-                android:inputType="textPassword"
+                android:inputType="numberSigned|textPassword"
                 android:maxLines="1"
                 android:paddingTop="10dp"
                 android:textColor="@color/black"
@@ -182,7 +187,7 @@
             style="@style/StyledTilEditText"
             android:layout_marginLeft="28.7dp"
             android:layout_marginRight="28.7dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/black">
@@ -190,6 +195,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/basal_lbl"
                 android:hint="Basal"
                 android:inputType="textPassword"
                 android:maxLines="1"
@@ -200,50 +206,66 @@
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/StyledTilEditText"
+            android:layout_marginLeft="28.7dp"
+            android:layout_marginRight="28.7dp"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/gender_lbl"
+                android:hint="Género"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:paddingTop="10dp"
+                android:textColor="@color/black"
 
+                android:textCursorDrawable="@drawable/color_cursor"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/registerInfo_btn"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <RadioGroup
+                android:id="@+id/radioGroupID"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+                    <RadioButton
+                        android:id="@+id/masculinoButtonID"
+                        android:layout_width="wrap_content"
+                        android:text="Masculino"
+                        android:layout_height="wrap_content"></RadioButton>
+                    <RadioButton
+                        android:id="@+id/femeninoButtonID"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Femenino">
+                    </RadioButton>
+            </RadioGroup>
+
+        </LinearLayout>
     </LinearLayout>
 
 
-
-    <LinearLayout
-        android:layout_above="@+id/bottom_btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-
-        <EditText
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textSize="17.3sp"
-            android:text="Already a user?"/>
-
-        <EditText
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textSize="17.3sp"
-            android:textColor="#006dff"
-            android:layout_marginLeft="5dp"
-            android:text="Login now"/>
-
-
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/bottom_btn"
+    <Button
+        android:id="@+id/registerInfo_btn"
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:background="@drawable/black_rect"
         android:textColor="#fbfbfb"
         android:textAllCaps="false"
+        android:textAlignment="center"
         android:layout_margin="19.3dp"
         android:text="Continuar"/>
 
