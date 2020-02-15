@@ -1,14 +1,17 @@
 package com.example.osid;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.osid.DB.DBCONTROLLER;
+import com.example.osid.GLOBAL.GLOBAL;
 import com.example.osid.POJOs.User;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,6 +28,8 @@ public class informacion_personal extends AppCompatActivity implements RadioGrou
     RadioGroup genderGroup;
     String gender;
     DBCONTROLLER dbcontroller;
+
+    TextView test;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +41,7 @@ public class informacion_personal extends AppCompatActivity implements RadioGrou
         ageEdit = findViewById(R.id.age_lbl);
         weightEdit = findViewById(R.id.weight_lbl);
         basalEdit = findViewById(R.id.basal_lbl);
+        test = findViewById(R.id.test);
         //---------------------------------------------------------//
         genderGroup = findViewById(R.id.radioGroupID);
         genderGroup.setOnCheckedChangeListener(this);
@@ -71,6 +77,9 @@ public class informacion_personal extends AppCompatActivity implements RadioGrou
             user.setGender(false);
 
         dbcontroller.InsertUser(user);
+        //Prueba();
+        Intent mainActivity = new Intent(this,MainActivity.class);
+        startActivity(mainActivity);
     }
 
     @Override
@@ -85,5 +94,10 @@ public class informacion_personal extends AppCompatActivity implements RadioGrou
                 gender="Femenino";
                 break;
         }
+    }
+
+    void Prueba(){
+        GLOBAL.user.copyUser(dbcontroller.GetUser());
+        test.setText(GLOBAL.user.getNombre() + " "+ GLOBAL.user.getPrimerApellido() + " "+GLOBAL.user.getSegundoApellido());
     }
 }
