@@ -1,4 +1,4 @@
-package com.example.osid.customfonts;
+package com.example.osid;
 
 import android.content.Context;
 import android.graphics.Typeface;
