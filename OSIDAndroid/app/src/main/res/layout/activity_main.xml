@@ -14,20 +14,85 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical">
+        <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:background="@color/blue"
+            android:layout_height="52dp">
+            <com.example.osid.MyTextView_Roboto_Regular
+                android:id="@+id/txtview_name_main"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#fff"
+                android:textSize="16.7sp"
+                android:layout_marginLeft="30dp"
+                android:layout_gravity="center"
+                android:text="¡Bienvenido! Angel"/>
+        </androidx.appcompat.widget.Toolbar>
 
-        <com.github.lzyzsd.circleprogress.ArcProgress
-            android:id="@+id/arc_progress"
-            android:layout_marginTop="80dp"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
 
-            app:arc_unfinished_color="@color/light_blue"
-            app:arc_text_color="@color/white"
-            app:arc_finished_color="@color/white"
-            app:arc_text_size="50dp"
-            app:arc_stroke_width="8dp"
-            app:arc_suffix_text_padding="15dp"
-            />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Switch
+                android:id="@+id/sw_active_basal_main"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/circle"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                />
+
+            <com.example.osid.MyTextView_Roboto_Regular
+                android:id="@+id/txtview_basal_main"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="18 U"
+                android:textColor="@color/white"
+                android:textSize="35sp"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/background_roundedcorners_darker"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="60dp">
+                <ImageButton
+                    android:id="@+id/add_basal_main"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_keyboard_arrow_up_black_32dp"
+                    android:layout_marginTop="3dp"
+                    />
+                <ImageButton
+                    android:id="@+id/substract_basal_main"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_keyboard_arrow_down_black_32dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="3dp"
+                    />
+            </LinearLayout>
+        </RelativeLayout>
+
     </LinearLayout>
 
     <LinearLayout
@@ -36,7 +101,10 @@
         android:layout_height="wrap_content"
 
         android:background="@color/white"
-        android:orientation="vertical">
+        android:orientation="vertical"
+
+        android:paddingTop="30dp"
+        android:paddingBottom="40dp">
 
 
         <LinearLayout
@@ -53,18 +121,19 @@
                 android:orientation="vertical">
 
 
-                <ImageView
+                <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:src="@drawable/ic_gallery"/>
+                    android:src="@drawable/ic_network_speed"
+                    android:background="@android:color/transparent"/>
 
                 <com.example.osid.MyTextView_Roboto_Regular
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="5dp"
-                    android:text="Photo Clean"
+                    android:text="Glucometro"
                     android:textColor="@color/black"
                     android:textSize="13dp"/>
             </LinearLayout>
@@ -76,11 +145,13 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <ImageView
+                <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:src="@drawable/ic_video"/>
+                    android:src="@drawable/ic_video"
+                    android:background="@android:color/transparent"
+                    />
 
                 <com.example.osid.MyTextView_Roboto_Regular
                     android:layout_width="wrap_content"
@@ -89,7 +160,7 @@
                     android:layout_gravity="center"
                     android:textColor="@color/black"
                     android:layout_marginTop="5dp"
-                    android:text="Video Manager"/>
+                    android:text="Manejo de OSID"/>
             </LinearLayout>
         </LinearLayout>
 
@@ -107,11 +178,13 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <ImageView
+                <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:src="@drawable/ic_network_speed"/>
+                    android:src="@drawable/ic_settings_gray"
+                    android:background="@android:color/transparent"
+                    />
 
                 <com.example.osid.MyTextView_Roboto_Regular
                     android:layout_width="wrap_content"
@@ -120,7 +193,7 @@
                     android:layout_gravity="center"
                     android:textColor="@color/black"
                     android:layout_marginTop="5dp"
-                    android:text="Network Meter"/>
+                    android:text="Configuracion"/>
             </LinearLayout>
 
             <LinearLayout
@@ -130,11 +203,12 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <ImageView
+                <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:src="@drawable/ic_monitering"/>
+                    android:src="@drawable/ic_monitering"
+                    android:background="@android:color/transparent"/>
 
                 <com.example.osid.MyTextView_Roboto_Regular
                     android:layout_width="wrap_content"
@@ -143,10 +217,9 @@
                     android:layout_gravity="center"
                     android:textColor="@color/black"
                     android:layout_marginTop="5dp"
-                    android:text="Cellular Monitering"/>
+                    android:text="Monitoreo"/>
             </LinearLayout>
         </LinearLayout>
-
     </LinearLayout>
 
 
