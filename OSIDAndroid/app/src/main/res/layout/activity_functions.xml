@@ -46,7 +46,7 @@
                         android:layout_height="wrap_content">
 
                         <androidx.cardview.widget.CardView
-                            android:layout_width="400dp"
+                            android:layout_width="350dp"
                             android:layout_height="300dp"
                             android:layout_gravity="center"
                             android:background="@drawable/fade_shadow"
@@ -186,10 +186,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
-                        <ImageView
-                            android:layout_width="wrap_content"
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="350dp"
                             android:layout_height="300dp"
-                            android:background="@drawable/fade_shadow" />
+                            android:layout_gravity="center"
+                            android:background="@drawable/fade_shadow"
+                            android:outlineAmbientShadowColor="@color/black"
+                            app:cardCornerRadius="10dp"
+                            app:cardUseCompatPadding="true"
+                            card_view:cardBackgroundColor="@android:color/white"
+                            card_view:cardElevation="5dp">
 
 
                         <LinearLayout
@@ -198,8 +204,7 @@
                             android:layout_marginLeft="40dp"
                             android:layout_marginRight="40dp"
                             android:gravity="center"
-                            android:orientation="vertical"
-                            android:paddingBottom="30dp">
+                            android:orientation="vertical">
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -284,9 +289,7 @@
                             <TextView
                                 android:layout_width="150dp"
                                 android:layout_height="wrap_content"
-
                                 android:layout_gravity="center"
-                                android:layout_marginBottom="20dp"
                                 android:background="@drawable/greem_rect"
                                 android:gravity="center"
                                 android:text="Inyectar"
@@ -295,6 +298,8 @@
 
                             </TextView>
                         </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
                     </FrameLayout>
                 </LinearLayout>
             </FrameLayout>
