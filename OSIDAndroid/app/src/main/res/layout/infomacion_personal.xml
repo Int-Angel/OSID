@@ -170,11 +170,11 @@
             android:textColor="@color/black">
 
             <EditText
+                android:id="@+id/weight_lbl"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/weight_lbl"
                 android:hint="Peso"
-                android:inputType="numberSigned|textPassword"
+                android:inputType="numberDecimal"
                 android:maxLines="1"
                 android:paddingTop="10dp"
                 android:textColor="@color/black"

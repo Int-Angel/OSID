@@ -14,7 +14,6 @@ import com.example.osid.GLOBAL.GLOBAL;
 import com.example.osid.POJOs.User;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -37,9 +36,15 @@ public class informacion_personal extends AppCompatActivity implements RadioGrou
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        dbcontroller = new DBCONTROLLER(this);
+
+        if(dbcontroller.GetUser()!=null)
+        {
+            Intent mainActivity = new Intent(this,MainActivity.class);
+            startActivity(mainActivity);
+        }
+
         setContentView(R.layout.infomacion_personal);
-
-
         nameEdit = findViewById(R.id.name_lbl);
         lastName1Edit = findViewById(R.id.lastName1_lbl);
         lastName2Edit = findViewById(R.id.lastName2_lbl);
@@ -47,10 +52,12 @@ public class informacion_personal extends AppCompatActivity implements RadioGrou
         weightEdit = findViewById(R.id.weight_lbl);
         basalEdit = findViewById(R.id.basal_lbl);
         test = findViewById(R.id.test);
+
         //--------------GENERO-------------------------//
         genderGroup = findViewById(R.id.radioGroupID);
         genderGroup.setOnCheckedChangeListener(this);
         //---------------------------------------------//
+
 
         //----------------EDITFIELDS-------------------//
         editFields = new ArrayList<EditText>();
@@ -86,7 +93,6 @@ public class informacion_personal extends AppCompatActivity implements RadioGrou
             }
         });
 
-        dbcontroller = new DBCONTROLLER(this);
     }
 
     private void RegisterUser()
