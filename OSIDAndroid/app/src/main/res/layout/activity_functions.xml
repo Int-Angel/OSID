@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="@color/blue">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,7 +22,7 @@
                 android:layout_height="wrap_content"
                 android:text="Manejo de OSID"
                 android:textSize="25dp"
-                android:textColor="#5b7196"
+                android:textColor="@color/white"
                 android:gravity="center"/>
 
 
@@ -32,47 +33,58 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
+                    android:gravity="center"
                     android:layout_marginTop="10dp"
                     android:elevation="1dp">
 
                     <FrameLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
-                        <ImageView
-                            android:layout_width="wrap_content"
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="400dp"
                             android:layout_height="260dp"
-                            android:background="@drawable/fade_shadow"/>
-
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="40dp"
-                            android:layout_marginRight="40dp"
-                            android:paddingBottom="30dp"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_marginTop="10dp"
-                                android:layout_width="wrap_content"
+                            android:layout_gravity="center"
+                            android:outlineAmbientShadowColor="@color/black"
+                            android:background="@drawable/fade_shadow"
+                            app:cardUseCompatPadding="true"
+                            app:cardCornerRadius="10dp"
+                            card_view:cardBackgroundColor="@android:color/white"
+                            card_view:cardElevation="5dp"
+                            >
+                            <LinearLayout
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Basal"
-                                android:textSize="20dp"
-                                ></TextView>
+                                android:layout_marginLeft="40dp"
+                                android:layout_marginRight="40dp"
+                                android:paddingBottom="30dp"
+                                android:gravity="center"
+                                android:orientation="vertical">
 
-                            <com.github.lzyzsd.circleprogress.ArcProgress
-                                android:id="@+id/arc_progress"
-                                android:layout_width="150dp"
-                                android:layout_height="150dp"
-                                android:layout_marginTop="20dp"
-                                app:arc_finished_color="@color/white"
-                                app:arc_stroke_width="8dp"
-                                app:arc_suffix_text_padding="15dp"
-                                app:arc_text_color="@color/blue"
-                                app:arc_text_size="50dp"
-                                app:arc_unfinished_color="@color/light_blue" />
-                        </LinearLayout>
+                                <TextView
+                                    android:layout_marginTop="10dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Basal"
+                                    android:textSize="20dp"
+                                    ></TextView>
+
+                                <com.github.lzyzsd.circleprogress.ArcProgress
+                                    android:id="@+id/arc_progress"
+                                    android:layout_width="150dp"
+                                    android:layout_height="150dp"
+                                    android:layout_marginTop="20dp"
+                                    app:arc_finished_color="@color/white"
+                                    app:arc_stroke_width="8dp"
+                                    app:arc_suffix_text_padding="15dp"
+                                    app:arc_text_color="@color/blue"
+                                    app:arc_text_size="50dp"
+                                    app:arc_unfinished_color="@color/light_blue" />
+
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+
+
 
 
 
