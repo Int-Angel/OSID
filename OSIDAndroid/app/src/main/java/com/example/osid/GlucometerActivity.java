@@ -1,5 +1,6 @@
 package com.example.osid;
 
+<<<<<<< HEAD
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
@@ -35,10 +36,19 @@ public class GlucometerActivity extends AppCompatActivity {
 
     BluetoothAdapter mBlueAdapter;
 
+=======
+import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class GlucometerActivity extends AppCompatActivity {
+
+>>>>>>> d018ce6624ae1e522ccf41a82db5c69c2864e27c
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_glucometer);
+<<<<<<< HEAD
 
         mStatusBlueTv = findViewById(R.id.statusBluetoothTv);
         mPairedTv     = findViewById(R.id.pairedTv);
@@ -153,3 +163,7 @@ public class GlucometerActivity extends AppCompatActivity {
     }
     
 }
+=======
+    }
+}
+>>>>>>> d018ce6624ae1e522ccf41a82db5c69c2864e27c

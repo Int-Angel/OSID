@@ -6,6 +6,9 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:statusBarColor">@color/colorPrimary</item>
+        <item name="android:navigationBarColor">@color/black</item>
     </style>
 
     <style name="StyledTilEditText">
@@ -20,7 +23,6 @@
         <item name="colorControlNormal">#141a22</item>
         <item name="colorControlActivated">#141a22</item>
         <item name="android:textColorPrimary">@color/black</item>
-
     </style>
 
 
