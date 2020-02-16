@@ -57,31 +57,27 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-<<<<<<< HEAD
-                        addBasal.setOnClickListener(new View.OnClickListener() {
-=======
         basal.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View view, int i, KeyEvent keyEvent) {
-               if((keyEvent.getAction() == KeyEvent.ACTION_DOWN) && (i == KeyEvent.KEYCODE_ENTER)){
-                   if(basal.getText().toString().length()<=0){
-                       basal.setText("0");
-                   }
-                   GLOBAL.user.setBasal(Float.parseFloat(basal.getText().toString()));
-                   //basal.setText(GLOBAL.user.getBasal() + " U");
-                   dbcontroller.ActualizarUser(GLOBAL.user);
-                   basalPerHour.setText(GLOBAL.user.getBasal() / 24 + " U/h");
-                   //basal.setSelected(false);
-                   basal.clearFocus();
-                   hideSoftKeyboard(getWindow().getDecorView().findViewById(android.R.id.content));
-                   return true;
-               }
+                if ((keyEvent.getAction() == KeyEvent.ACTION_DOWN) && (i == KeyEvent.KEYCODE_ENTER)) {
+                    if (basal.getText().toString().length() <= 0) {
+                        basal.setText("0");
+                    }
+                    GLOBAL.user.setBasal(Float.parseFloat(basal.getText().toString()));
+                    //basal.setText(GLOBAL.user.getBasal() + " U");
+                    dbcontroller.ActualizarUser(GLOBAL.user);
+                    basalPerHour.setText(GLOBAL.user.getBasal() / 24 + " U/h");
+                    //basal.setSelected(false);
+                    basal.clearFocus();
+                    hideSoftKeyboard(getWindow().getDecorView().findViewById(android.R.id.content));
+                    return true;
+                }
                 return false;
             }
         });
 
         addBasal.setOnClickListener(new View.OnClickListener() {
->>>>>>> 13445aac25069e8fe5871af16c48c9a651acd025
             @Override
             public void onClick(View view) {
                 AddBasal(1);
@@ -134,6 +130,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
     public static void hideSoftKeyboard(View view) {
         if (view != null) {
             InputMethodManager inputManager = (InputMethodManager) view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -143,15 +140,15 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    void Initialitation(){
+    void Initialitation() {
         GLOBAL.user.copyUser(dbcontroller.GetUser());
 
         basal.setText(GLOBAL.user.getBasal() + "");
 
         String Bienvenida = "";
-        if(GLOBAL.user.isGender()){
+        if (GLOBAL.user.isGender()) {
             Bienvenida = "¡Bienvenido! ";
-        }else{
+        } else {
             Bienvenida = "¡Bienvenida! ";
         }
         Bienvenida += GLOBAL.user.getNombre();
@@ -161,8 +158,8 @@ public class MainActivity extends AppCompatActivity {
         basalPerHour.setText(GLOBAL.user.getBasal() / 24 + " U/h");
     }
 
-    void AddBasal(int n){
-        if(activeBasal.isChecked()){
+    void AddBasal(int n) {
+        if (activeBasal.isChecked()) {
             GLOBAL.user.setBasal(GLOBAL.user.getBasal() + n);
             basal.setText(GLOBAL.user.getBasal() + "");
             dbcontroller.ActualizarUser(GLOBAL.user);
@@ -170,10 +167,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    void SubstractBasal(int n){
-        if(activeBasal.isChecked()){
+    void SubstractBasal(int n) {
+        if (activeBasal.isChecked()) {
             float finalBasal = GLOBAL.user.getBasal() - n;
-            if(finalBasal >= 0){
+            if (finalBasal >= 0) {
                 GLOBAL.user.setBasal(finalBasal);
                 basal.setText(GLOBAL.user.getBasal() + "");
                 dbcontroller.ActualizarUser(GLOBAL.user);
@@ -182,27 +179,27 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    void ChangeBasalActivation(boolean active){
+    void ChangeBasalActivation(boolean active) {
         //TODO mandar al arduino esat info
     }
 
-    void OpenGlucometer(){
-        Intent glucometerActivity = new Intent(this,GlucometerActivity.class);
+    void OpenGlucometer() {
+        Intent glucometerActivity = new Intent(this, GlucometerActivity.class);
         startActivity(glucometerActivity);
     }
 
-    void OpenOSID(){
-        Intent osidAtivity = new Intent(this,FunctionsActivity.class);
+    void OpenOSID() {
+        Intent osidAtivity = new Intent(this, FunctionsActivity.class);
         startActivity(osidAtivity);
     }
 
-    void OpenSettings(){
-        Intent settingsActivity = new Intent(this,SettingsActivity.class);
+    void OpenSettings() {
+        Intent settingsActivity = new Intent(this, SettingsActivity.class);
         startActivity(settingsActivity);
     }
 
-    void OpenCharts(){
-        Intent chartsActivity = new Intent(this,GraphActivity.class);
+    void OpenCharts() {
+        Intent chartsActivity = new Intent(this, GraphActivity.class);
         startActivity(chartsActivity);
     }
 
