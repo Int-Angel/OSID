@@ -53,19 +53,6 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_centerHorizontal="true"
-<<<<<<< HEAD
-                android:layout_centerVertical="true"/>
-
-            <com.example.osid.MyTextView_Roboto_Regular
-                android:id="@+id/txtview_basal_main"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="18 U"
-                android:textColor="@color/white"
-                android:textSize="35sp"
-                android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true"/>
-=======
                 android:layout_centerVertical="true"
                 >
                 <RelativeLayout
@@ -108,7 +95,6 @@
                     />
 
             </LinearLayout>
->>>>>>> 257b6558044864d57a5441997190934db00e3d06
 
             <LinearLayout
                 android:layout_width="wrap_content"
