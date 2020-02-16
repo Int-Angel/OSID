@@ -47,7 +47,7 @@ public class GlucometerActivity extends AppCompatActivity {
         mOffBtn       = findViewById(R.id.offBtn);
         mDiscoverBtn  = findViewById(R.id.discoverableBtn);
         mPairedBtn    = findViewById(R.id.pairedBtn);
-        mListView     = findViewById(R.id.listview);
+       // mListView     = findViewById(R.id.listview);
 
         //adapter
         mBlueAdapter = BluetoothAdapter.getDefaultAdapter();

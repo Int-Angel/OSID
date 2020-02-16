@@ -1,11 +1,8 @@
 package com.example.osid.DB;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-
-import com.example.osid.POJOs.Glucose;
 
 public class DBCREATOR extends SQLiteOpenHelper {
 
@@ -25,10 +22,10 @@ public class DBCREATOR extends SQLiteOpenHelper {
         db.execSQL(String.format("CREATE TABLE IF NOT EXISTS %s(Id_Usuario INTEGER PRIMARY KEY AUTOINCREMENT, Nombre TEXT,PrimerApellido TEXT,SegundoApellido TEXT,Edad INTEGER, Peso FLOAT, Basal FLOAT, Genero BOOLEAN)",TABLA_USUARIO));
 
         db.execSQL(String.format("CREATE TABLE IF NOT EXISTS %s(Id_Glucose INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "FechaHora DATETIME, Glucosa INTEGER)",TABLA_USUARIO));
+                "FechaHora DATETIME, Glucosa INTEGER)",TABLA_GLUCOSE));
 
         db.execSQL(String.format("CREATE TABLE IF NOT EXISTS %s(Id_Insuline INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "FechaHora DATETIME, Insuline FLOAT)",TABLA_USUARIO));
+                "FechaHora DATETIME, Insuline FLOAT)",TABLA_INSULINE));
     }
 
     @Override

@@ -44,7 +44,7 @@ public class DBCONTROLLER {
         contentValues.put("FechaHora",new SimpleDateFormat(GLOBAL.DATE_FORMAT).format(newGlucose.getFecha()));
         contentValues.put("Glucosa",newGlucose.getGlucose());
 
-        return database.insert(dbcreator.TABLA_USUARIO, null, contentValues);
+        return database.insert(dbcreator.TABLA_GLUCOSE, null, contentValues);
     }
 
     public long InsertInsuline(Insuline newInsuline){
@@ -52,9 +52,9 @@ public class DBCONTROLLER {
 
         ContentValues contentValues = new ContentValues();
         contentValues.put("FechaHora",new SimpleDateFormat(GLOBAL.DATE_FORMAT).format(newInsuline.getFecha()));
-        contentValues.put("Glucosa",newInsuline.getInsuline());
+        contentValues.put("Insuline",newInsuline.getInsuline());
 
-        return database.insert(dbcreator.TABLA_USUARIO, null, contentValues);
+        return database.insert(dbcreator.TABLA_INSULINE, null, contentValues);
     }
 
     public User GetUser(){
@@ -158,7 +158,6 @@ public class DBCONTROLLER {
 
     public ArrayList<Insuline> GetArrayInsuline(){
         ArrayList<Insuline> insulineArrayList = new ArrayList<>();
-
         SQLiteDatabase database = dbcreator.getReadableDatabase();
 
         String[] columnasAConsultar = {"Id_Insuline","FechaHora","Insuline"};

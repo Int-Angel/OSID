@@ -27,5 +27,6 @@
         <activity android:name=".GlucometerActivity"/>
         <activity android:name=".MainActivity" />
         <activity android:name=".FunctionsActivity" />
+        <activity android:name=".GraphActivity"/>
     </application>
 </manifest>
