@@ -9,13 +9,13 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.osid.DB.DBCONTROLLER;
 import com.example.osid.GLOBAL.GLOBAL;
 import com.example.osid.POJOs.User;
 
 import java.util.ArrayList;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 public class informacion_personal extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener{
 
