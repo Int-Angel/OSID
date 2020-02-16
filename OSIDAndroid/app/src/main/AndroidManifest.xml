@@ -21,20 +21,10 @@
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-<<<<<<< HEAD
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-        <activity android:name=".MainActivity">
-        </activity>
-        <activity android:name=".GlucometerActivity">
-=======
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
->>>>>>> d018ce6624ae1e522ccf41a82db5c69c2864e27c
-        </activity>
+        <activity android:name=".GlucometerActivity"/>
         <activity android:name=".MainActivity" />
         <activity android:name=".FunctionsActivity" />
     </application>
