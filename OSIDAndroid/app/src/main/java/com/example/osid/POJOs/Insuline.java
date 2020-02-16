@@ -7,6 +7,9 @@ public class Insuline {
     Date fecha;
     float insuline;
 
+    public Insuline() {
+    }
+
     public Insuline(Date fecha, float insuline) {
         this.fecha = fecha;
         this.insuline = insuline;

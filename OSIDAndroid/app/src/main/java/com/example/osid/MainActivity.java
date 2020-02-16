@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        addBasal.setOnClickListener(new View.OnClickListener() {
+                        addBasal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AddBasal(1);
@@ -160,4 +160,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(chartsActivity);
     }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Initialitation();
+    }
 }
