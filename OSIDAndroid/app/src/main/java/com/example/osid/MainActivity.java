@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     ImageButton addBasal, substractBasal;
     MyTextView_Roboto_Regular basal, name;
     Switch activeBasal;
+    MyTextView_Roboto_Bold time, basalPerHour;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
         name = findViewById(R.id.txtview_name_main);
 
         activeBasal = findViewById(R.id.sw_active_basal_main);
+
+        time = findViewById(R.id.txtview_time_basal_per_hour_main);
+        basalPerHour = findViewById(R.id.txtview_basal_per_hour_main);
 
         activeBasal.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -104,6 +108,9 @@ public class MainActivity extends AppCompatActivity {
         }
         Bienvenida += GLOBAL.user.getNombre();
         name.setText(Bienvenida);
+
+        time.setText("Tiempo: " + 0 + " min"); //TODO con el arduino
+        basalPerHour.setText(GLOBAL.user.getBasal() / 24 + " U/h");
     }
 
     void AddBasal(int n){
@@ -111,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
             GLOBAL.user.setBasal(GLOBAL.user.getBasal() + n);
             basal.setText(GLOBAL.user.getBasal() + " U");
             dbcontroller.ActualizarUser(GLOBAL.user);
+            basalPerHour.setText(GLOBAL.user.getBasal() / 24 + " U/h");
         }
     }
 
@@ -121,6 +129,7 @@ public class MainActivity extends AppCompatActivity {
                 GLOBAL.user.setBasal(finalBasal);
                 basal.setText(GLOBAL.user.getBasal() + " U");
                 dbcontroller.ActualizarUser(GLOBAL.user);
+                basalPerHour.setText(GLOBAL.user.getBasal() / 24 + " U/h");
             }
         }
     }
@@ -128,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
     void ChangeBasalActivation(boolean active){
         //TODO mandar al arduino esat info
 
-        
+
     }
 
     void OpenGlucometer(){
