@@ -45,12 +45,15 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
             >
-            <ImageView
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/circle"
+                android:orientation="vertical"
                 android:layout_centerHorizontal="true"
+<<<<<<< HEAD
                 android:layout_centerVertical="true"/>
 
             <com.example.osid.MyTextView_Roboto_Regular
@@ -62,6 +65,50 @@
                 android:textSize="35sp"
                 android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true"/>
+=======
+                android:layout_centerVertical="true"
+                >
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    >
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/circle"
+                        />
+                    <com.example.osid.MyTextView_Roboto_Regular
+                        android:id="@+id/txtview_basal_main"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="18 U"
+                        android:textColor="@color/white"
+                        android:textSize="35sp"
+                        android:layout_centerVertical="true"
+                        android:layout_centerHorizontal="true"
+                        />
+                </RelativeLayout>
+                <com.example.osid.MyTextView_Roboto_Bold
+                    android:id="@+id/txtview_time_basal_per_hour_main"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:text="Time: 48 min"
+                    android:textSize="14dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="-35dp"/>
+                <com.example.osid.MyTextView_Roboto_Bold
+                    android:id="@+id/txtview_basal_per_hour_main"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:text="0.75 U/h"
+                    android:textSize="14dp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+>>>>>>> 257b6558044864d57a5441997190934db00e3d06
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -98,11 +145,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        android:background="@color/white"
+        android:background="@drawable/whitecard_rounded_top_corners"
         android:orientation="vertical"
 
         android:paddingTop="30dp"
-        android:paddingBottom="40dp">
+        android:paddingBottom="40dp"
+
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp">
 
 
         <LinearLayout
@@ -120,11 +170,13 @@
 
 
                 <ImageButton
+                    android:id="@+id/btn_openGlucometer_main"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:src="@drawable/ic_network_speed"
-                    android:background="@android:color/transparent"/>
+                    android:src="@drawable/ic_bubble_chart_black_24dp"
+                    android:background="@android:color/transparent"
+                    />
 
                 <com.example.osid.MyTextView_Roboto_Regular
                     android:layout_width="wrap_content"
@@ -144,10 +196,11 @@
                 android:orientation="vertical">
 
                 <ImageButton
+                    android:id="@+id/btn_openOSID_main"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:src="@drawable/ic_video"
+                    android:src="@drawable/ic_gamepad_black_24dp"
                     android:background="@android:color/transparent"
                     />
 
@@ -160,7 +213,10 @@
                     android:layout_marginTop="5dp"
                     android:text="Manejo de OSID"/>
             </LinearLayout>
+
+
         </LinearLayout>
+
 
 
         <LinearLayout
@@ -177,10 +233,11 @@
                 android:orientation="vertical">
 
                 <ImageButton
+                    android:id="@+id/btn_openSettings_main"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:src="@drawable/ic_settings_gray"
+                    android:src="@drawable/ic_settings_black_24dp"
                     android:background="@android:color/transparent"
                     />
 
@@ -202,10 +259,11 @@
                 android:orientation="vertical">
 
                 <ImageButton
+                    android:id="@+id/btn_openCharts_main"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:src="@drawable/ic_monitering"
+                    android:src="@drawable/ic_timeline_black_24dp"
                     android:background="@android:color/transparent"/>
 
                 <com.example.osid.MyTextView_Roboto_Regular
