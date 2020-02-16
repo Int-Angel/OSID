@@ -24,7 +24,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".GlucometerActivity"/>
         <activity android:name=".MainActivity" />
         <activity android:name=".FunctionsActivity" />
         <activity android:name=".GraphActivity"/>
