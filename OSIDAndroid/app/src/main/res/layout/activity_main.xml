@@ -45,25 +45,56 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
             >
-            <ImageView
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/circle"
+                android:orientation="vertical"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-                />
+                >
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    >
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/circle"
+                        />
+                    <com.example.osid.MyTextView_Roboto_Regular
+                        android:id="@+id/txtview_basal_main"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="18 U"
+                        android:textColor="@color/white"
+                        android:textSize="35sp"
+                        android:layout_centerVertical="true"
+                        android:layout_centerHorizontal="true"
+                        />
+                </RelativeLayout>
+                <com.example.osid.MyTextView_Roboto_Bold
+                    android:id="@+id/txtview_time_basal_per_hour_main"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:text="Time: 48 min"
+                    android:textSize="14dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="-35dp"/>
+                <com.example.osid.MyTextView_Roboto_Bold
+                    android:id="@+id/txtview_basal_per_hour_main"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:text="0.75 U/h"
+                    android:textSize="14dp"
+                    android:layout_gravity="center"
+                    />
 
-            <com.example.osid.MyTextView_Roboto_Regular
-                android:id="@+id/txtview_basal_main"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="18 U"
-                android:textColor="@color/white"
-                android:textSize="35sp"
-                android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true"
-                />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -100,11 +131,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        android:background="@color/white"
+        android:background="@drawable/whitecard_rounded_top_corners"
         android:orientation="vertical"
 
         android:paddingTop="30dp"
-        android:paddingBottom="40dp">
+        android:paddingBottom="40dp"
+
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp">
 
 
         <LinearLayout
@@ -126,7 +160,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:src="@drawable/ic_network_speed"
-                    android:background="@android:color/transparent"/>
+                    android:background="@android:color/transparent"
+                    />
 
                 <com.example.osid.MyTextView_Roboto_Regular
                     android:layout_width="wrap_content"
