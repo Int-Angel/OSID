@@ -5,41 +5,13 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-        <com.github.mikephil.charting.charts.BarChart
+        <com.github.mikephil.charting.charts.LineChart
             android:id="@+id/mpChart"
             android:layout_width="match_parent"
             android:layout_height="354dp"
             android:layout_margin="10dp"
             />
 
-        <EditText
-            android:id="@+id/xvalue"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="X" />
-
-        <EditText
-            android:id="@+id/yvalue"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Y" />
-
-        <Button
-            android:id="@+id/Set"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Ingresar dato" />
-
-        <Button
-            android:id="@+id/Update"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Actualizar base de datos" />
-
-        <ListView
-            android:id="@+id/listview"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"/>
 
 
 </LinearLayout>

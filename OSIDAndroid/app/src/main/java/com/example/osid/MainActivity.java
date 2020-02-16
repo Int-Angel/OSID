@@ -1,9 +1,14 @@
 package com.example.osid;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Switch;
 
@@ -17,7 +22,8 @@ public class MainActivity extends AppCompatActivity {
     DBCONTROLLER dbcontroller;
     ImageButton openGlucomenter, openOSID, openSettings, openCharts;
     ImageButton addBasal, substractBasal;
-    MyTextView_Roboto_Regular basal, name;
+    MyTextView_Roboto_Regular name;
+    EditText basal;
     Switch activeBasal;
     MyTextView_Roboto_Bold time, basalPerHour;
 
@@ -51,7 +57,31 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+<<<<<<< HEAD
                         addBasal.setOnClickListener(new View.OnClickListener() {
+=======
+        basal.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View view, int i, KeyEvent keyEvent) {
+               if((keyEvent.getAction() == KeyEvent.ACTION_DOWN) && (i == KeyEvent.KEYCODE_ENTER)){
+                   if(basal.getText().toString().length()<=0){
+                       basal.setText("0");
+                   }
+                   GLOBAL.user.setBasal(Float.parseFloat(basal.getText().toString()));
+                   //basal.setText(GLOBAL.user.getBasal() + " U");
+                   dbcontroller.ActualizarUser(GLOBAL.user);
+                   basalPerHour.setText(GLOBAL.user.getBasal() / 24 + " U/h");
+                   //basal.setSelected(false);
+                   basal.clearFocus();
+                   hideSoftKeyboard(getWindow().getDecorView().findViewById(android.R.id.content));
+                   return true;
+               }
+                return false;
+            }
+        });
+
+        addBasal.setOnClickListener(new View.OnClickListener() {
+>>>>>>> 13445aac25069e8fe5871af16c48c9a651acd025
             @Override
             public void onClick(View view) {
                 AddBasal(1);
@@ -95,10 +125,28 @@ public class MainActivity extends AppCompatActivity {
         Initialitation();
     }
 
+    public static void hideSoftKeyboard(Activity activity) {
+        if (activity != null) {
+            InputMethodManager inputManager = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+            if (activity.getCurrentFocus() != null && inputManager != null) {
+                inputManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
+                inputManager.hideSoftInputFromInputMethod(activity.getCurrentFocus().getWindowToken(), 0);
+            }
+        }
+    }
+    public static void hideSoftKeyboard(View view) {
+        if (view != null) {
+            InputMethodManager inputManager = (InputMethodManager) view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+            if (inputManager != null) {
+                inputManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+            }
+        }
+    }
+
     void Initialitation(){
         GLOBAL.user.copyUser(dbcontroller.GetUser());
 
-        basal.setText(GLOBAL.user.getBasal() + " U");
+        basal.setText(GLOBAL.user.getBasal() + "");
 
         String Bienvenida = "";
         if(GLOBAL.user.isGender()){
@@ -116,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
     void AddBasal(int n){
         if(activeBasal.isChecked()){
             GLOBAL.user.setBasal(GLOBAL.user.getBasal() + n);
-            basal.setText(GLOBAL.user.getBasal() + " U");
+            basal.setText(GLOBAL.user.getBasal() + "");
             dbcontroller.ActualizarUser(GLOBAL.user);
             basalPerHour.setText(GLOBAL.user.getBasal() / 24 + " U/h");
         }
@@ -125,9 +173,9 @@ public class MainActivity extends AppCompatActivity {
     void SubstractBasal(int n){
         if(activeBasal.isChecked()){
             float finalBasal = GLOBAL.user.getBasal() - n;
-            if(finalBasal>=0){
+            if(finalBasal >= 0){
                 GLOBAL.user.setBasal(finalBasal);
-                basal.setText(GLOBAL.user.getBasal() + " U");
+                basal.setText(GLOBAL.user.getBasal() + "");
                 dbcontroller.ActualizarUser(GLOBAL.user);
                 basalPerHour.setText(GLOBAL.user.getBasal() / 24 + " U/h");
             }
@@ -136,8 +184,6 @@ public class MainActivity extends AppCompatActivity {
 
     void ChangeBasalActivation(boolean active){
         //TODO mandar al arduino esat info
-
-
     }
 
     void OpenGlucometer(){
