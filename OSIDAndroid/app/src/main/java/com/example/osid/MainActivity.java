@@ -57,31 +57,27 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-<<<<<<< HEAD
-                        addBasal.setOnClickListener(new View.OnClickListener() {
-=======
         basal.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View view, int i, KeyEvent keyEvent) {
-               if((keyEvent.getAction() == KeyEvent.ACTION_DOWN) && (i == KeyEvent.KEYCODE_ENTER)){
-                   if(basal.getText().toString().length()<=0){
-                       basal.setText("0");
-                   }
-                   GLOBAL.user.setBasal(Float.parseFloat(basal.getText().toString()));
-                   //basal.setText(GLOBAL.user.getBasal() + " U");
-                   dbcontroller.ActualizarUser(GLOBAL.user);
-                   basalPerHour.setText(GLOBAL.user.getBasal() / 24 + " U/h");
-                   //basal.setSelected(false);
-                   basal.clearFocus();
-                   hideSoftKeyboard(getWindow().getDecorView().findViewById(android.R.id.content));
-                   return true;
-               }
+                if((keyEvent.getAction() == KeyEvent.ACTION_DOWN) && (i == KeyEvent.KEYCODE_ENTER)){
+                    if(basal.getText().toString().length()<=0){
+                        basal.setText("0");
+                    }
+                    GLOBAL.user.setBasal(Float.parseFloat(basal.getText().toString()));
+                    //basal.setText(GLOBAL.user.getBasal() + " U");
+                    dbcontroller.ActualizarUser(GLOBAL.user);
+                    basalPerHour.setText(GLOBAL.user.getBasal() / 24 + " U/h");
+                    //basal.setSelected(false);
+                    basal.clearFocus();
+                    hideSoftKeyboard(getWindow().getDecorView().findViewById(android.R.id.content));
+                    return true;
+                }
                 return false;
             }
         });
 
         addBasal.setOnClickListener(new View.OnClickListener() {
->>>>>>> 13445aac25069e8fe5871af16c48c9a651acd025
             @Override
             public void onClick(View view) {
                 AddBasal(1);
@@ -205,7 +201,6 @@ public class MainActivity extends AppCompatActivity {
         Intent chartsActivity = new Intent(this,GraphActivity.class);
         startActivity(chartsActivity);
     }
-
     @Override
     protected void onRestart() {
         super.onRestart();
