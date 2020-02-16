@@ -1,8 +1,11 @@
 package com.example.osid.DB;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import com.example.osid.POJOs.Glucose;
 
 public class DBCREATOR extends SQLiteOpenHelper {
 
@@ -32,4 +35,15 @@ public class DBCREATOR extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 
     }
+/*
+    public boolean insertdata(float valuex, float valuey){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put("xValue", valuex);
+        contentValues.put("yValue", valuey);
+        sqLiteDatabase.insert("Glucose", null, contentValues);
+    }
+    */
+
 }
