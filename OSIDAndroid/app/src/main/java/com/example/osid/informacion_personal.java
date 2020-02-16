@@ -13,10 +13,14 @@ import com.example.osid.DB.DBCONTROLLER;
 import com.example.osid.GLOBAL.GLOBAL;
 import com.example.osid.POJOs.User;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class informacion_personal extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener{
 
+    ArrayList<EditText> editFields;
     EditText nameEdit;
     EditText lastName1Edit;
     EditText lastName2Edit;
@@ -29,10 +33,12 @@ public class informacion_personal extends AppCompatActivity implements RadioGrou
     DBCONTROLLER dbcontroller;
 
     TextView test;
+    Boolean errors;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.infomacion_personal);
+
 
         nameEdit = findViewById(R.id.name_lbl);
         lastName1Edit = findViewById(R.id.lastName1_lbl);
@@ -41,19 +47,42 @@ public class informacion_personal extends AppCompatActivity implements RadioGrou
         weightEdit = findViewById(R.id.weight_lbl);
         basalEdit = findViewById(R.id.basal_lbl);
         test = findViewById(R.id.test);
-        //---------------------------------------------------------//
+        //--------------GENERO-------------------------//
         genderGroup = findViewById(R.id.radioGroupID);
         genderGroup.setOnCheckedChangeListener(this);
+        //---------------------------------------------//
 
-        //---------------------------------------------------------//
-
+        //----------------EDITFIELDS-------------------//
+        editFields = new ArrayList<EditText>();
+        editFields.add(nameEdit);
+        editFields.add(lastName1Edit);
+        editFields.add(lastName2Edit);
+        editFields.add(ageEdit);
+        editFields.add(weightEdit);
+        editFields.add(basalEdit);
+        //----------------------------------------------//
         registerInfo = findViewById(R.id.registerInfo_btn);
+
+
 
         registerInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                RegisterUser();
-                Toast.makeText(informacion_personal.this, "vientos", Toast.LENGTH_SHORT).show();
+                errors=false;
+                for (int i=0; i<= editFields.size()-1; i++)
+                {
+                    if(isEmpty(editFields.get(i)))
+                    {
+                        setError(editFields.get(i), "Falta llenar este campo");
+                        errors = true;
+                    }
+                }
+                if(!errors)
+                {
+                    RegisterUser();
+                    Toast.makeText(informacion_personal.this, "vientos", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
@@ -76,7 +105,7 @@ public class informacion_personal extends AppCompatActivity implements RadioGrou
             user.setGender(false);
 
         dbcontroller.InsertUser(user);
-        //Prueba();
+        Prueba();
         Intent mainActivity = new Intent(this,MainActivity.class);
         startActivity(mainActivity);
     }
@@ -98,5 +127,16 @@ public class informacion_personal extends AppCompatActivity implements RadioGrou
     void Prueba(){
         GLOBAL.user.copyUser(dbcontroller.GetUser());
         test.setText(GLOBAL.user.getNombre() + " "+ GLOBAL.user.getPrimerApellido() + " "+GLOBAL.user.getSegundoApellido());
+    }
+
+
+    public static boolean isEmpty(EditText editText) {
+
+        String input = editText.getText().toString().trim();
+        return input.length() == 0;
+    }
+
+    public static void setError(EditText editText, String errorString) {
+        editText.setError(errorString);
     }
 }
