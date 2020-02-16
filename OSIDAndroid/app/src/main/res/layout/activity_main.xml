@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
+    android:background="@color/colorPrimary"
     android:orientation="vertical">
 
     <LinearLayout
@@ -20,7 +21,7 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
 
-            app:arc_unfinished_color="#e98f8a"
+            app:arc_unfinished_color="@color/light_blue"
             app:arc_text_color="@color/white"
             app:arc_finished_color="@color/white"
             app:arc_text_size="50dp"
@@ -81,7 +82,7 @@
                     android:layout_gravity="center"
                     android:src="@drawable/ic_video"/>
 
-                <com.example.osid.customfonts.MyTextView_Roboto_Regular
+                <com.example.osid.MyTextView_Roboto_Regular
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="13dp"
@@ -112,7 +113,7 @@
                     android:layout_gravity="center"
                     android:src="@drawable/ic_network_speed"/>
 
-                <com.example.osid.customfonts.MyTextView_Roboto_Regular
+                <com.example.osid.MyTextView_Roboto_Regular
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="13dp"
@@ -135,7 +136,7 @@
                     android:layout_gravity="center"
                     android:src="@drawable/ic_monitering"/>
 
-                <com.example.osid.customfonts.MyTextView_Roboto_Regular
+                <com.example.osid.MyTextView_Roboto_Regular
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="13dp"
