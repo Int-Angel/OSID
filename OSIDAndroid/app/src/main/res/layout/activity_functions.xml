@@ -68,6 +68,21 @@
                                     android:textSize="20dp"
                                     ></TextView>
 
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/blue_circle"
+                                    />
+                                <com.example.osid.MyTextView_Roboto_Regular
+                                    android:id="@+id/txtview_basal_main"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="18 U"
+                                    android:textColor="@color/white"
+                                    android:textSize="35sp"
+                                    android:layout_centerVertical="true"
+                                    android:layout_centerHorizontal="true"
+                                    />
                                 <com.github.lzyzsd.circleprogress.ArcProgress
                                     android:id="@+id/arc_progress"
                                     android:layout_width="150dp"
