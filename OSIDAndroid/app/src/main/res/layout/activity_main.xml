@@ -64,16 +64,19 @@
                         android:layout_height="wrap_content"
                         android:src="@drawable/circle"
                         />
-                    <com.example.osid.MyTextView_Roboto_Regular
+                    <EditText
                         android:id="@+id/txtview_basal_main"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="18 U"
+                        android:text="18"
                         android:textColor="@color/white"
                         android:textSize="35sp"
                         android:layout_centerVertical="true"
                         android:layout_centerHorizontal="true"
+                        android:background="@android:color/transparent"
+                        android:inputType="numberDecimal"
                         />
+
                 </RelativeLayout>
                 <com.example.osid.MyTextView_Roboto_Bold
                     android:id="@+id/txtview_time_basal_per_hour_main"
