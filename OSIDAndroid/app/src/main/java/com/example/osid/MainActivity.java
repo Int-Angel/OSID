@@ -60,13 +60,8 @@ public class MainActivity extends AppCompatActivity {
         basal.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View view, int i, KeyEvent keyEvent) {
-<<<<<<< HEAD
                 if ((keyEvent.getAction() == KeyEvent.ACTION_DOWN) && (i == KeyEvent.KEYCODE_ENTER)) {
                     if (basal.getText().toString().length() <= 0) {
-=======
-                if((keyEvent.getAction() == KeyEvent.ACTION_DOWN) && (i == KeyEvent.KEYCODE_ENTER)){
-                    if(basal.getText().toString().length()<=0){
->>>>>>> 3a6f155730ddfbdfaf7bf7572ee15a846b0f68ac
                         basal.setText("0");
                     }
                     GLOBAL.user.setBasal(Float.parseFloat(basal.getText().toString()));
@@ -207,6 +202,7 @@ public class MainActivity extends AppCompatActivity {
         Intent chartsActivity = new Intent(this, GraphActivity.class);
         startActivity(chartsActivity);
     }
+
     @Override
     protected void onRestart() {
         super.onRestart();

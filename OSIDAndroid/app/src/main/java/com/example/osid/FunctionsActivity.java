@@ -20,6 +20,7 @@ import org.w3c.dom.Text;
 import java.lang.reflect.Array;
 import java.math.BigDecimal;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -45,6 +46,7 @@ public class FunctionsActivity extends AppCompatActivity {
     BigDecimal currentInsuline = new BigDecimal("0.1");
 
     Button inyectarButton;
+    ArrayList<Insuline> insulines;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,7 +77,7 @@ public class FunctionsActivity extends AppCompatActivity {
             }
         });
 
-        
+
         //---------------------------------------------------------------------------------------------------//
         addBasal.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,21 +132,23 @@ public class FunctionsActivity extends AppCompatActivity {
 
     private void CheckInsulineRegs() {
         int size=0;
+
+        try {
+            size = dbcontroller.GetArrayInsuline().size();
+        }
+        catch(Exception e)
+        {}
+
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Date date = new Date();
         System.out.println(dateFormat.format(date));
 
-        try{
-            size = dbcontroller.GetArrayInsuline().size();
-        }
-        catch (Exception e)
-        {}
 
         if(size > 0)
         {
             Date lastRegTime = new Date();
             lastRegTime = dbcontroller.GetArrayInsuline().get(size-1).getFecha();
-            //lastRegTime =  GLOBAL.INSULINE_ARRAY_LIST.get(size-1).getFecha();
+
             long millisReg = lastRegTime.getTime();
             long millisNow = date.getTime();
 
@@ -155,7 +159,7 @@ public class FunctionsActivity extends AppCompatActivity {
             {
                 inyectarButton.setEnabled(false);
                 inyectarButton.setBackgroundColor(Color.GRAY);
-                lastReg.setText("Inyeccion en Proceso a "+GLOBAL.INSULINE_ARRAY_LIST.get(size-1).getFecha().toString());
+                lastReg.setText("Inyeccion en Proceso a "+dbcontroller.GetArrayInsuline().get(size-1).getFecha().toString());
             }
 
             else
@@ -197,21 +201,26 @@ public class FunctionsActivity extends AppCompatActivity {
 
 
     private void inyeccionInstantanea() {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+
         Date date = new Date();
-        System.out.println(dateFormat.format(date)); //2016/11/16 12:08:43
         newInsuline.setFecha(date);
         newInsuline.setInsuline(currentInsuline.floatValue());
-        GLOBAL.INSULINE_ARRAY_LIST.add(newInsuline);
+        inyectarButton.setEnabled(false);
+        inyectarButton.setBackgroundColor(Color.GRAY);
 
         dbcontroller.InsertInsuline(newInsuline);
-
-        int size = GLOBAL.INSULINE_ARRAY_LIST.size();
-        lastReg.setText("Inyeccion en Proceso a "+GLOBAL.INSULINE_ARRAY_LIST.get(size-1).getFecha().toString());
+        int size = dbcontroller.GetArrayInsuline().size();
+        lastReg.setText("Inyeccion en Proceso a "+dbcontroller.GetArrayInsuline().get(size-1).getFecha().toString());
     }
 
 
-
+    public static Date StringToDate(String dateStr, String format){
+        try{
+            return new SimpleDateFormat(format).parse(dateStr);
+        }catch (ParseException e){
+            return null;
+        }
+    }
 
     void ChangeBasalActivation(boolean active) {
     }
