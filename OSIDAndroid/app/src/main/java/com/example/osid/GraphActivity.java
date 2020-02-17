@@ -46,6 +46,10 @@ public class GraphActivity extends AppCompatActivity {
             dtStart = "2020-03-" + i +" 17:00:00";
             dbcontroller.InsertInsuline(new Insuline(i,StringToDate(dtStart, GLOBAL.DATE_FORMAT),new Random().nextInt((40 - 1) + 1) + 1));
             dbcontroller.InsertGlucose(new Glucose(i,StringToDate(dtStart, GLOBAL.DATE_FORMAT),new Random().nextInt((300 - 55) + 1) + 55));
+            dtStart = "2020-03-" + i +" 11:00:00";
+            dbcontroller.InsertGlucose(new Glucose(i,StringToDate(dtStart, GLOBAL.DATE_FORMAT),new Random().nextInt((300 - 55) + 1) + 55));
+            dtStart = "2020-03-" + i +" 21:00:00";
+            dbcontroller.InsertGlucose(new Glucose(i,StringToDate(dtStart, GLOBAL.DATE_FORMAT),new Random().nextInt((300 - 55) + 1) + 55));
         }
 
         List<Insuline> insulines = new ArrayList<Insuline>(dbcontroller.GetArrayInsuline());
@@ -75,11 +79,16 @@ public class GraphActivity extends AppCompatActivity {
         LineDataSet dataSet = new LineDataSet(entries,"Insulina");
         dataSet.setColor(getColor(R.color.blue));
         dataSet.setValueTextColor(getColor(R.color.black));
+        dataSet.setFillAlpha(100);
+        dataSet.setDrawFilled(true);
+        dataSet.setFillColor(getColor(R.color.blue));
         lines.add(dataSet);
 
         LineDataSet dataSet2 = new LineDataSet(entries2,"Glucosa");
         dataSet2.setColor(getColor(R.color.colorAccent));
         dataSet2.setValueTextColor(getColor(R.color.black));
+        dataSet2.setFillAlpha(100);
+        dataSet2.setDrawFilled(true);
         dataSet2.setFillColor(getColor(R.color.colorAccent));
         lines.add(dataSet2);
 
@@ -88,7 +97,7 @@ public class GraphActivity extends AppCompatActivity {
         lineData.addDataSet(dataSet);
         lineData.addDataSet(dataSet2);
         lineChart.setData(lineData);
-        lineChart.animateY(800);
+        lineChart.animateY(1000);
 
         ValueFormatter valueFormatter = new ValueFormatter() {
             @Override
