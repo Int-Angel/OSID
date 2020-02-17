@@ -9,9 +9,7 @@
             android:id="@+id/mpChart"
             android:layout_width="match_parent"
             android:layout_height="354dp"
-            android:layout_margin="10dp"
-            />
-
+            android:layout_margin="10dp" />
 
 
 </LinearLayout>
