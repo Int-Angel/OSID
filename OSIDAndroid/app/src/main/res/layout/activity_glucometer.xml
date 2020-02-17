@@ -1,67 +1,219 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center_horizontal"
-    tools:context=".GlucometerActivity">
+    tools:context=".GlucometerActivity"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical">
 
-    <!--Display whether bluetooth is available or not-->
+    <LinearLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+        <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:background="@color/blue"
+            android:layout_height="52dp">
+            <com.example.osid.MyTextView_Roboto_Regular
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#fff"
+                android:textSize="16.7sp"
+                android:layout_marginLeft="30dp"
+                android:layout_gravity="center"
+                android:text="Glucometro"/>
+        </androidx.appcompat.widget.Toolbar>
+    </LinearLayout>
+
     <TextView
         android:id="@+id/statusBluetoothTv"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="384dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="297dp"
         android:text=""
         android:textAlignment="center"
         android:textColor="#000"
         android:textSize="20sp" />
-    <!--Bluetooth icon (on/off)-->
-    <ImageView
-        android:id="@+id/bluetoothIv"
-        android:layout_width="100dp"
-        android:layout_height="100dp" />
-    <!--On Button-->
-    <Button
-        android:id="@+id/onBtn"
-        android:minWidth="200dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Turn On"
-        style="@style/Base.Widget.AppCompat.Button.Colored"/>
-    <!--Off btn-->
-    <Button
-        android:id="@+id/offBtn"
-        android:minWidth="200dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Turn Off"
-        style="@style/Base.Widget.AppCompat.Button.Colored"/>
-    <!--Discoverable button-->
-    <Button
-        android:id="@+id/discoverableBtn"
-        android:minWidth="200dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Discoverable"
-        style="@style/Base.Widget.AppCompat.Button.Colored"/>
-    <!--Get list of paired devices button-->
-    <Button
-        android:id="@+id/pairedBtn"
-        android:minWidth="200dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Get Paired Devices"
-        style="@style/Base.Widget.AppCompat.Button.Colored"/>
-    <!--Show paired devices here-->
+
     <TextView
         android:id="@+id/pairedTv"
-        android:minWidth="200dp"
-        android:text=""
-        android:textColor="#000"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="65dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="616dp"
+        android:text=""
+        android:textAlignment="center"
+        android:textColor="#000"
+        android:textSize="5sp" />
 
-</LinearLayout>
+    <ListView
+        android:id="@+id/deviceList"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="173dp"
+        android:layout_marginBottom="88dp"
+        android:minWidth="200dp"
+        android:textColor="#000" />
+
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:background="@drawable/whitecard_rounded_top_corners"
+        android:orientation="vertical"
+
+        android:paddingTop="30dp"
+        android:paddingBottom="40dp"
+
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:gravity="center"
+
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <ImageButton
+                    android:id="@+id/scanBtn"
+                    android:onClick="ScanForDevices"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_action_search"
+                    android:background="@android:color/transparent"
+                    />
+
+                <com.example.osid.MyTextView_Roboto_Regular
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:text="Buscar Dispositivos cercanos"
+                    android:textColor="@color/black"
+                    android:textSize="13dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/pairedBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_action_searchexistent"
+                    android:background="@android:color/transparent"
+                    />
+
+                <com.example.osid.MyTextView_Roboto_Regular
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13dp"
+                    android:layout_gravity="center"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="5dp"
+                    android:text="Buscar dispositivos enlazados"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:gravity="center"
+
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center">
+
+                    <Switch
+                        android:id="@+id/turnonoff"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:checked="false" />
+
+                    <ImageView
+                        android:id="@+id/bluetoothIv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_action_off"
+                        android:background="@android:color/transparent"/>
+                </LinearLayout>
+                <com.example.osid.MyTextView_Roboto_Regular
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13dp"
+                    android:layout_gravity="center"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="5dp"
+                    android:text="Prender/Apagar Bluetooth"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/medirBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_action_verifyglucose1"
+                    android:background="@android:color/transparent"/>
+
+                <com.example.osid.MyTextView_Roboto_Regular
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13dp"
+                    android:layout_gravity="center"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="5dp"
+                    android:text="Realizar medicion de glucosa"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+
+</RelativeLayout>
