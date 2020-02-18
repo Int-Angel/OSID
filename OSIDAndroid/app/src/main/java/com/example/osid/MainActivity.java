@@ -11,6 +11,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Switch;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -155,6 +156,7 @@ public class MainActivity extends AppCompatActivity {
 
         time.setText("Tiempo: " + 0 + " min"); //TODO con el arduino
         basalPerHour.setText(GLOBAL.user.getBasal() / 24 + " U/h");
+
     }
 
     void AddBasal(int n){
