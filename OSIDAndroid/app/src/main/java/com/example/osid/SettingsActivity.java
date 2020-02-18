@@ -1,5 +1,6 @@
 package com.example.osid;
 
+<<<<<<< HEAD
 import android.Manifest;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -66,11 +67,19 @@ public class SettingsActivity extends AppCompatActivity implements CompoundButto
             }
         }
     };
+=======
+import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class SettingsActivity extends AppCompatActivity {
+>>>>>>> parent of a0d00fa... AVANCES GLUCOMETRO
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+<<<<<<< HEAD
         onOff = findViewById(R.id.turnonoff);
         onOff.setOnCheckedChangeListener(this);
         mStatusBlueTv = findViewById(R.id.statusBluetoothTv);
@@ -357,3 +366,7 @@ public class SettingsActivity extends AppCompatActivity implements CompoundButto
         }
     }
 }
+=======
+    }
+}
+>>>>>>> parent of a0d00fa... AVANCES GLUCOMETRO
