@@ -1,6 +1,7 @@
 package com.example.osid;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import android.Manifest;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -74,11 +75,19 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class SettingsActivity extends AppCompatActivity {
 >>>>>>> parent of a0d00fa... AVANCES GLUCOMETRO
+=======
+import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class SettingsActivity extends AppCompatActivity {
+>>>>>>> parent of a0d00fa... AVANCES GLUCOMETRO
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+<<<<<<< HEAD
 <<<<<<< HEAD
         onOff = findViewById(R.id.turnonoff);
         onOff.setOnCheckedChangeListener(this);
@@ -366,6 +375,10 @@ public class SettingsActivity extends AppCompatActivity {
         }
     }
 }
+=======
+    }
+}
+>>>>>>> parent of a0d00fa... AVANCES GLUCOMETRO
 =======
     }
 }
