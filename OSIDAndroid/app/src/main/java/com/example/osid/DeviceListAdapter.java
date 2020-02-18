@@ -3,12 +3,10 @@ package com.example.osid;
 import android.app.Activity;
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -31,8 +29,6 @@ public class DeviceListAdapter extends ArrayAdapter<BluetoothDevice> {
     }
 
     public View getView(int position, View convertView, ViewGroup parent){
-
-        Button connectBtn = convertView.findViewById(R.id.connectBtn);
         convertView = mLayoutInflater.inflate(mViewResourceId, null);
 
         BluetoothDevice device = mDevices.get(position);
