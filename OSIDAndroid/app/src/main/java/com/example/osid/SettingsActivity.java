@@ -1,6 +1,7 @@
 package com.example.osid;
 
 import android.Manifest;
+import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
@@ -75,31 +76,29 @@ public class SettingsActivity extends AppCompatActivity implements CompoundButto
         onOff.setOnCheckedChangeListener(this);
         mStatusBlueTv = findViewById(R.id.statusBluetoothTv);
         mScanBtn = findViewById(R.id.scanBtn);
-        mPairedTv     = findViewById(R.id.pairedTv);
-        mBlueIv       = findViewById(R.id.bluetoothIv);
+        mPairedTv = findViewById(R.id.pairedTv);
+        mBlueIv = findViewById(R.id.bluetoothIv);
         //mOffBtn       = findViewById(R.id.offBtn);
         //mDiscoverBtn  = findViewById(R.id.discoverableBtn);
-        mPairedBtn    = findViewById(R.id.pairedBtn);
-        mListView     = findViewById(R.id.deviceList);
+        mPairedBtn = findViewById(R.id.pairedBtn);
+        mListView = findViewById(R.id.deviceList);
         mBTdevices = new ArrayList<>();
 
         //adapter
         mBlueAdapter = BluetoothAdapter.getDefaultAdapter();
 
         //check if bluetooth is available or not
-        if (mBlueAdapter == null){
-            mStatusBlueTv.setText("Bluetooth is not available");
-        }
-        else {
-            mStatusBlueTv.setText("Bluetooth is available");
+        if (mBlueAdapter == null) {
+            mStatusBlueTv.setText("No existe Bluetooth");
+        } else {
+            mStatusBlueTv.setText("Existe Bluetooth");
         }
 
         //set image according to bluetooth status(on/off)
-        if (mBlueAdapter.isEnabled()){
+        if (mBlueAdapter.isEnabled()) {
             mBlueIv.setImageResource(R.drawable.ic_action_on);
             onOff.setChecked(true);
-        }
-        else {
+        } else {
             mBlueIv.setImageResource(R.drawable.ic_action_off);
             onOff.setChecked(false);
         }
@@ -114,12 +113,13 @@ public class SettingsActivity extends AppCompatActivity implements CompoundButto
 
                     if (endOfLineIndex > 0) {
                         String dataInPrint = DataStringIN.substring(0, endOfLineIndex);
-                        IdBufferIn.setText("Dato: " + dataInPrint);//<-<- PARTE A MODIFICAR >->->
+                        //IdBufferIn.setText("Dato: " + dataInPrint);//<-<- PARTE A MODIFICAR >->->
                         DataStringIN.delete(0, DataStringIN.length());
                     }
                 }
             }
-        }
+        };
+
 /*
         //on btn click
         mOnBtn.setOnClickListener(new View.OnClickListener() {
@@ -166,22 +166,20 @@ public class SettingsActivity extends AppCompatActivity implements CompoundButto
         mPairedBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mBlueAdapter.isEnabled()){
+                if (mBlueAdapter.isEnabled()) {
                     mPairedTv.setText("Paired Devices");
                     Set<BluetoothDevice> devices = mBlueAdapter.getBondedDevices();
-                    for (BluetoothDevice device: devices){
-                        mPairedTv.append("\nDevice: " + device.getName()+ ", " + device);
+                    for (BluetoothDevice device : devices) {
+                        mPairedTv.append("\nDevice: " + device.getName() + ", " + device);
                     }
-                }
-                else {
+                } else {
                     //bluetooth is off so can't get paired devices
                     showToast("Turn on bluetooth to get paired devices");
                 }
             }
         });
-
-
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode){
@@ -273,7 +271,7 @@ public class SettingsActivity extends AppCompatActivity implements CompoundButto
         //Consigue la direccion MAC desde DeviceListActivity via intent
         Intent intent = getIntent();
         //Consigue la direccion MAC desde DeviceListActivity via EXTRA
-        address = intent.getStringExtra(DispositivosBT.EXTRA_DEVICE_ADDRESS);//<-<- PARTE A MODIFICAR >->->
+        //address = intent.getStringExtra(DispositivosBT.EXTRA_DEVICE_ADDRESS);//<-<- PARTE A MODIFICAR >->->
         //Setea la direccion MAC
         BluetoothDevice device = btAdapter.getRemoteDevice(address);
 
