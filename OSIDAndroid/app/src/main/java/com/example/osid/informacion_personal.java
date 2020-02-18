@@ -26,12 +26,12 @@ public class informacion_personal extends AppCompatActivity implements RadioGrou
     EditText ageEdit;
     EditText weightEdit;
     EditText basalEdit;
+    EditText promedioGlucosaPorUnidadDeInulina;
     Button registerInfo;
     RadioGroup genderGroup;
     String gender;
     DBCONTROLLER dbcontroller;
 
-    TextView test;
     Boolean errors;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +51,8 @@ public class informacion_personal extends AppCompatActivity implements RadioGrou
         ageEdit = findViewById(R.id.age_lbl);
         weightEdit = findViewById(R.id.weight_lbl);
         basalEdit = findViewById(R.id.basal_lbl);
-        test = findViewById(R.id.test);
+        promedioGlucosaPorUnidadDeInulina = findViewById(R.id.promedioBasal_lbl);
+
 
         //--------------GENERO-------------------------//
         genderGroup = findViewById(R.id.radioGroupID);
@@ -104,6 +105,7 @@ public class informacion_personal extends AppCompatActivity implements RadioGrou
         user.setPrimerApellido(lastName1Edit.getText().toString());
         user.setSegundoApellido(lastName2Edit.getText().toString());
         user.setBasal(Integer.parseInt(basalEdit.getText().toString()));
+        user.setPGPU(Float.parseFloat(promedioGlucosaPorUnidadDeInulina.getText().toString()));
 
         if(gender == "Masculino")
             user.setGender(true);
@@ -111,7 +113,6 @@ public class informacion_personal extends AppCompatActivity implements RadioGrou
             user.setGender(false);
 
         dbcontroller.InsertUser(user);
-        Prueba();
         Intent mainActivity = new Intent(this,MainActivity.class);
         startActivity(mainActivity);
     }
@@ -128,11 +129,6 @@ public class informacion_personal extends AppCompatActivity implements RadioGrou
                 gender="Femenino";
                 break;
         }
-    }
-
-    void Prueba(){
-        GLOBAL.user.copyUser(dbcontroller.GetUser());
-        test.setText(GLOBAL.user.getNombre() + " "+ GLOBAL.user.getPrimerApellido() + " "+GLOBAL.user.getSegundoApellido());
     }
 
 
