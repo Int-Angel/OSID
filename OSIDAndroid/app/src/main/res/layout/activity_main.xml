@@ -5,7 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
     android:background="@color/colorPrimary"
     android:orientation="vertical">
 
@@ -28,6 +27,7 @@
                 android:layout_gravity="center"
                 android:text="¡Bienvenido! Angel"/>
         </androidx.appcompat.widget.Toolbar>
+
 
         <RelativeLayout
             android:layout_width="match_parent"
