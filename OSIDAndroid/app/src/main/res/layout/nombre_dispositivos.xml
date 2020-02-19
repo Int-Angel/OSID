@@ -3,7 +3,8 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:background="@drawable/background_roundedcorners_green"
-    android:text="">
+    android:background="@drawable/shadow_background_1"
+    android:text=""
+    android:textStyle="bold">
 
 </TextView>
