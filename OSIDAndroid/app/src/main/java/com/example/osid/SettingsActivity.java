@@ -28,7 +28,7 @@ public class SettingsActivity extends AppCompatActivity implements CompoundButto
     private static final int REQUEST_ENABLE_BT = 0;
     //private static final int REQUEST_DISCOVER_BT = 1;
 
-    ImageButton Bluetooth, Otros;
+    ImageButton Bluetooth, Otros, back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +37,14 @@ public class SettingsActivity extends AppCompatActivity implements CompoundButto
 
         Bluetooth = findViewById(R.id.BluetoothSettings);
         Otros = findViewById(R.id.CualquierOtro);
+        back = findViewById(R.id.goBack_settings);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
     }
 
     @Override
@@ -51,7 +59,7 @@ public class SettingsActivity extends AppCompatActivity implements CompoundButto
 
 
     public void OtrosAjustes(View view) {
-        Intent i = new Intent(this, BluetoothConfigurarActivity.class);
+        Intent i = new Intent(this, OtherSettigsActivity.class);
         startActivity(i);
     }
 }

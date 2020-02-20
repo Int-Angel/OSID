@@ -2,6 +2,7 @@ package com.example.osid;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -14,6 +15,7 @@ public class GlucometerActivity extends AppCompatActivity {
     TextView waitTime_txt;
     TextView waitingGlucometer_lbl;
     LinearLayout glucoInfoLinearLayout;
+    ImageButton back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +25,14 @@ public class GlucometerActivity extends AppCompatActivity {
         waitTime_txt = findViewById(R.id.waitTimeID_glucometer);
         waitingGlucometer_lbl = findViewById(R.id.waitingGlucometerID_glucometer);
         glucoInfoLinearLayout = findViewById(R.id.glucoInfoID_LinearLayout);
+        back = findViewById(R.id.goBackID_glucometer);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         ReceiveData(false);
     }
 

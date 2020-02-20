@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,6 +26,7 @@ public class BluetoothConfigurarActivity extends AppCompatActivity {
     // Depuración de LOGCAT
     private static final String TAG = "BluetoothConfigurarActivity";
     ListView IdLista;
+    ImageButton back;
     // String que se enviara a la actividad principal, mainactivity
     public static String EXTRA_DEVICE_ADDRESS = "device_address";
     private BluetoothAdapter mBtAdapter;
@@ -35,6 +37,14 @@ public class BluetoothConfigurarActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_configurar_bluetooth);
+
+        back = findViewById(R.id.goBackID_bluetooth);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
     }
 
     @Override

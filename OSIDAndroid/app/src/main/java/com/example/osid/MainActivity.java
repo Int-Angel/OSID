@@ -206,4 +206,10 @@ public class MainActivity extends AppCompatActivity {
         super.onRestart();
         Initialitation();
     }
+
+    @Override
+    public void onBackPressed()
+    {
+
+    }
 }
