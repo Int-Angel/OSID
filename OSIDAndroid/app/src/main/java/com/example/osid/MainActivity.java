@@ -11,6 +11,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Switch;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     EditText basal;
     Switch activeBasal;
     MyTextView_Roboto_Bold time, basalPerHour;
+    TextView insulinaRestante;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
 
         time = findViewById(R.id.txtview_time_basal_per_hour_main);
         basalPerHour = findViewById(R.id.txtview_basal_per_hour_main);
+
+        insulinaRestante = findViewById(R.id.txtview_insulina_restante);
 
         activeBasal.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override

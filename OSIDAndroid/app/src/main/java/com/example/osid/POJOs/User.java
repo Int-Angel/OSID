@@ -6,6 +6,7 @@ public class User {
     float peso;
     float PGPU; // promedio glucosa por unidad
     float basal;
+    float insulinaRestante;
     boolean gender;
     String nombre, primerApellido, segundoApellido;
 
@@ -13,7 +14,7 @@ public class User {
 
     }
 
-    public User(int edad, float peso, float basal, boolean gender, String nombre, String primerApellido, String segundoApellido, float PGPU)  {
+    public User(int edad, float peso, float basal, boolean gender, String nombre, String primerApellido, String segundoApellido, float PGPU, float insulinaRestante)  {
         this.edad = edad;
         this.peso = peso;
         this.basal = basal;
@@ -22,9 +23,10 @@ public class User {
         this.primerApellido = primerApellido;
         this.segundoApellido = segundoApellido;
         this.PGPU = PGPU;
+        this.insulinaRestante = insulinaRestante;
     }
 
-    public User(int id, String nombre, String primerApellido, String segundoApellido, int edad, float peso, float basal, boolean gender, float PGPU) {
+    public User(int id, String nombre, String primerApellido, String segundoApellido, int edad, float peso, float basal, boolean gender, float PGPU, float insulinaRestante) {
         this.id = id;
         this.edad = edad;
         this.peso = peso;
@@ -34,6 +36,7 @@ public class User {
         this.primerApellido = primerApellido;
         this.segundoApellido = segundoApellido;
         this.PGPU = PGPU;
+        this.insulinaRestante = insulinaRestante;
     }
 
     public User(User user){
@@ -46,6 +49,7 @@ public class User {
         this.primerApellido = user.primerApellido;
         this.segundoApellido = user.segundoApellido;
         this.PGPU = user.PGPU;
+        this.insulinaRestante = user.insulinaRestante;
     }
 
     public void  copyUser(User user) {
@@ -58,6 +62,7 @@ public class User {
         this.primerApellido = user.primerApellido;
         this.segundoApellido = user.segundoApellido;
         this.PGPU = user.PGPU;
+        this.insulinaRestante = user.insulinaRestante;
     }
     public int getId() {
         return id;
@@ -128,5 +133,12 @@ public class User {
 
     public  float getPGPU(){
         return PGPU;
+    }
+
+    public void setInsulinaRestante(float insulinaRestante){
+        this.insulinaRestante = insulinaRestante;
+    }
+    public  float getInsulinaRestante(){
+        return insulinaRestante;
     }
 }
