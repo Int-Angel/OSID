@@ -215,6 +215,30 @@
             android:layout_height="wrap_content"
             android:textColor="@color/black">
 
+            <EditText
+                android:id="@+id/promedioBasal_lbl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="¿Cuanta glucosa te baja una unidad en promedio?"
+                android:inputType="numberDecimal"
+                android:maxLines="1"
+                android:paddingTop="10dp"
+                android:textColor="@color/black"
+                android:textCursorDrawable="@drawable/color_cursor"
+                android:textSize="14sp" />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/StyledTilEditText"
+            android:layout_marginLeft="28.7dp"
+            android:layout_marginRight="28.7dp"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -228,6 +252,7 @@
                 android:textCursorDrawable="@drawable/color_cursor"
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -256,12 +281,6 @@
 
         </LinearLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/test"
-            android:textColor="@color/black"
-            />
     </LinearLayout>
 
 
