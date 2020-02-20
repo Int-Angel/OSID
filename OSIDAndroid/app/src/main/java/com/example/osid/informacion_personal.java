@@ -31,7 +31,6 @@ public class informacion_personal extends AppCompatActivity implements RadioGrou
     String gender;
     DBCONTROLLER dbcontroller;
 
-    TextView test;
     Boolean errors;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +50,7 @@ public class informacion_personal extends AppCompatActivity implements RadioGrou
         ageEdit = findViewById(R.id.age_lbl);
         weightEdit = findViewById(R.id.weight_lbl);
         basalEdit = findViewById(R.id.basal_lbl);
-        test = findViewById(R.id.test);
+
 
         //--------------GENERO-------------------------//
         genderGroup = findViewById(R.id.radioGroupID);
@@ -111,7 +110,7 @@ public class informacion_personal extends AppCompatActivity implements RadioGrou
             user.setGender(false);
 
         dbcontroller.InsertUser(user);
-        Prueba();
+
         Intent mainActivity = new Intent(this,MainActivity.class);
         startActivity(mainActivity);
     }
@@ -130,10 +129,6 @@ public class informacion_personal extends AppCompatActivity implements RadioGrou
         }
     }
 
-    void Prueba(){
-        GLOBAL.user.copyUser(dbcontroller.GetUser());
-        test.setText(GLOBAL.user.getNombre() + " "+ GLOBAL.user.getPrimerApellido() + " "+GLOBAL.user.getSegundoApellido());
-    }
 
 
     public static boolean isEmpty(EditText editText) {
