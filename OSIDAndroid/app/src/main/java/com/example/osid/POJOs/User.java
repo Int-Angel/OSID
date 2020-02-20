@@ -4,6 +4,7 @@ public class User {
     int id;
     int edad;
     float peso;
+    float PGPU; // promedio glucosa por unidad
     float basal;
     boolean gender;
     String nombre, primerApellido, segundoApellido;
@@ -12,7 +13,7 @@ public class User {
 
     }
 
-    public User(int edad, float peso, float basal, boolean gender, String nombre, String primerApellido, String segundoApellido) {
+    public User(int edad, float peso, float basal, boolean gender, String nombre, String primerApellido, String segundoApellido, float PGPU)  {
         this.edad = edad;
         this.peso = peso;
         this.basal = basal;
@@ -20,9 +21,10 @@ public class User {
         this.nombre = nombre;
         this.primerApellido = primerApellido;
         this.segundoApellido = segundoApellido;
+        this.PGPU = PGPU;
     }
 
-    public User(int id, String nombre, String primerApellido, String segundoApellido, int edad, float peso, float basal, boolean gender) {
+    public User(int id, String nombre, String primerApellido, String segundoApellido, int edad, float peso, float basal, boolean gender, float PGPU) {
         this.id = id;
         this.edad = edad;
         this.peso = peso;
@@ -31,6 +33,7 @@ public class User {
         this.nombre = nombre;
         this.primerApellido = primerApellido;
         this.segundoApellido = segundoApellido;
+        this.PGPU = PGPU;
     }
 
     public User(User user){
@@ -42,6 +45,7 @@ public class User {
         this.nombre = user.nombre;
         this.primerApellido = user.primerApellido;
         this.segundoApellido = user.segundoApellido;
+        this.PGPU = user.PGPU;
     }
 
     public void  copyUser(User user) {
@@ -53,6 +57,7 @@ public class User {
         this.nombre = user.nombre;
         this.primerApellido = user.primerApellido;
         this.segundoApellido = user.segundoApellido;
+        this.PGPU = user.PGPU;
     }
     public int getId() {
         return id;
@@ -116,5 +121,12 @@ public class User {
 
     public void setSegundoApellido(String segundoApellido) {
         this.segundoApellido = segundoApellido;
+    }
+    public void setPGPU(float PGPU){
+        this.PGPU = PGPU;
+    }
+
+    public  float getPGPU(){
+        return PGPU;
     }
 }

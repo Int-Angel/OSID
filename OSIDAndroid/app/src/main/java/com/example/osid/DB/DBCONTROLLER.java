@@ -33,6 +33,7 @@ public class DBCONTROLLER {
         contentValues.put("Peso",newUser.getPeso());
         contentValues.put("Basal",newUser.getBasal());
         contentValues.put("Genero",newUser.isGender());
+        contentValues.put("PGPU", newUser.getPGPU());
 
         return database.insert(dbcreator.TABLA_USUARIO, null, contentValues);
     }
@@ -71,7 +72,8 @@ public class DBCONTROLLER {
                 "Edad",
                 "Peso",
                 "Basal",
-                "Genero"
+                "Genero",
+                "PGPU"
         };
 
         Cursor cursor = database.query(
@@ -104,7 +106,8 @@ public class DBCONTROLLER {
                     cursor.getInt(4),
                     cursor.getFloat(5),
                     cursor.getFloat(6),
-                    cursor.getInt(7)>0
+                    cursor.getInt(7)>0,
+                    cursor.getFloat(8)
             );
             cursor.close();
             return user;
@@ -207,6 +210,7 @@ public class DBCONTROLLER {
         contentValues.put("Peso",newUser.getPeso());
         contentValues.put("Basal",newUser.getBasal());
         contentValues.put("Genero",newUser.isGender());
+        contentValues.put("PGPU",newUser.getPGPU());
 
         String campoParaActualizar = "Id_Usuario = ?";
         String[] argumentoParaActualizar = {String.valueOf(newUser.getId())};
