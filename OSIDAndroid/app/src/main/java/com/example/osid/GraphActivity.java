@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -40,6 +41,7 @@ public class GraphActivity extends AppCompatActivity {
     DBCONTROLLER dbcontroller;
     Button btn_Hoy, btn_Semana, btn_Mes;
     TextView fechaInicio, fechaFin;
+    ImageButton back;
 
     Date fechaActual;
     Date startDate;
@@ -65,6 +67,8 @@ public class GraphActivity extends AppCompatActivity {
         btn_Mes = findViewById(R.id.btn_mes);
         btn_Semana = findViewById(R.id.btn_semana);
 
+        back = findViewById(R.id.goBack_charts);
+
         fechaActual = new Date();
 
         btn_Hoy.setOnClickListener(new View.OnClickListener() {
@@ -89,6 +93,12 @@ public class GraphActivity extends AppCompatActivity {
         });
 
 
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         fechaInicio.setOnClickListener(new View.OnClickListener() {
             @Override
