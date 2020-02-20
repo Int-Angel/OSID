@@ -264,6 +264,17 @@
                     android:text="Monitoreo"/>
             </LinearLayout>
         </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/bluetoothStatuslbl_main_ID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Conectado/Desconectado"
+            android:layout_marginLeft="85dp"
+            android:drawableLeft="@drawable/ic_action_on">
+
+        </TextView>
     </LinearLayout>
 
 

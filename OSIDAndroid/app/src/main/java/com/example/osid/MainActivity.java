@@ -11,10 +11,13 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Switch;
+import android.widget.TextView;
 
+import androidx.annotation.ColorInt;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.osid.DB.DBCONTROLLER;
+import com.example.osid.GLOBAL.BluetoothVerifyConnection;
 import com.example.osid.GLOBAL.GLOBAL;
 
 public class MainActivity extends AppCompatActivity {
@@ -26,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     EditText basal;
     Switch activeBasal;
     MyTextView_Roboto_Bold time, basalPerHour;
+    TextView bluetoothStatuslbl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,10 +54,18 @@ public class MainActivity extends AppCompatActivity {
         time = findViewById(R.id.txtview_time_basal_per_hour_main);
         basalPerHour = findViewById(R.id.txtview_basal_per_hour_main);
 
+
+        //------------------------BLUETOOTH INFO---------------------------------------//
+        bluetoothStatuslbl = findViewById(R.id.bluetoothStatuslbl_main_ID);
+        bluetoothStatuslbl.setText("Sin Conexion");
+        bluetoothStatuslbl.setTextColor(getColor(R.color.red));
+        //-----------------------------------------------------------------------------//
+
         activeBasal.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 ChangeBasalActivation(b);
+
             }
         });
 
@@ -119,7 +131,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         Initialitation();
+        VerifyBTModuleConnection();
     }
+
 
     public static void hideSoftKeyboard(Activity activity) {
         if (activity != null) {
@@ -178,6 +192,26 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private void VerifyBTModuleConnection() {
+        BluetoothVerifyConnection bluetoothVerifyConnection = new BluetoothVerifyConnection();
+        if(GLOBAL.bluetoothDevice.getMAC() != null)
+        {
+            bluetoothVerifyConnection.VerifyConnection();
+
+            if(bluetoothVerifyConnection.isSuccessfull)
+            {
+                bluetoothStatuslbl.setText("Enhorabuena! Estas Conectado");
+                bluetoothStatuslbl.setTextColor(getColor(R.color.colorAccent));
+            }
+            else{
+                bluetoothStatuslbl.setText("Sin Conexion");
+                bluetoothStatuslbl.setTextColor(getColor(R.color.red));
+            }
+
+        }
+    }
+
+
     void ChangeBasalActivation(boolean active){
         //TODO mandar al arduino esat info
     }
@@ -205,6 +239,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onRestart() {
         super.onRestart();
         Initialitation();
+        VerifyBTModuleConnection();
     }
 
     @Override

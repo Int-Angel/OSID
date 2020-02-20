@@ -77,11 +77,19 @@ public class BluetoothConfigurarActivity extends AppCompatActivity {
             String info = ((TextView) v).getText().toString();
             String address = info.substring(info.length() - 17);
             GLOBAL.bluetoothDevice.setDeviceName(info);
-            GLOBAL.bluetoothDevice.setMAC(address);
 
-            Intent i = new Intent(BluetoothConfigurarActivity.this, MainActivity.class);
-            startActivity(i);
-            Toast.makeText(BluetoothConfigurarActivity.this, "Se ha guardado tu preferencia", Toast.LENGTH_SHORT).show();
+            if(address.equals("98:D3:32:31:5C:28"))
+            {
+                GLOBAL.bluetoothDevice.setMAC(address);
+
+                Intent i = new Intent(BluetoothConfigurarActivity.this, MainActivity.class);
+                startActivity(i);
+                Toast.makeText(BluetoothConfigurarActivity.this, "Se ha guardado tu preferencia", Toast.LENGTH_SHORT).show();
+            }
+            else
+                Toast.makeText(BluetoothConfigurarActivity.this, "Este dispositivo no es valido", Toast.LENGTH_SHORT).show();
+
+
         }
     };
 
