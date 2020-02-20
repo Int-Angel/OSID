@@ -1,10 +1,12 @@
 package com.example.osid;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.text.format.DateUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,6 +25,7 @@ import com.github.mikephil.charting.formatter.ValueFormatter;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Year;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
@@ -38,10 +41,19 @@ public class GraphActivity extends AppCompatActivity {
     Button btn_Hoy, btn_Semana, btn_Mes;
     TextView fechaInicio, fechaFin;
 
+    Date fechaActual;
+    Date startDate;
+    Date endDate;
+
+    Calendar auxCalendar;
+
+    DatePickerDialog datePickerDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graph);
+
+        auxCalendar = Calendar.getInstance();
 
         lineChart = findViewById(R.id.mpChart);
         dbcontroller = new DBCONTROLLER(this);
@@ -52,6 +64,8 @@ public class GraphActivity extends AppCompatActivity {
         btn_Hoy = findViewById(R.id.btn_hoy);
         btn_Mes = findViewById(R.id.btn_mes);
         btn_Semana = findViewById(R.id.btn_semana);
+
+        fechaActual = new Date();
 
         btn_Hoy.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,6 +88,26 @@ public class GraphActivity extends AppCompatActivity {
             }
         });
 
+
+
+        fechaInicio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ChooseDate(fechaInicio, true);
+                //startDate = StringToDate(fechaInicio.getText().toString(),GLOBAL.DATE_FORMAT);
+
+            }
+        });
+
+        fechaFin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ChooseDate(fechaFin, false);
+                //endDate = StringToDate(fechaInicio.getText().toString(),GLOBAL.DATE_FORMAT);
+
+            }
+        });
+
         //TODO Borrar
         TestData();
         Initialization();
@@ -92,6 +126,9 @@ public class GraphActivity extends AppCompatActivity {
     }
 
     void Initialization(){
+        startDate = new Date();
+        endDate = new Date();
+        fechaActual = new Date();
        ShowTodayData();
     }
 
@@ -204,8 +241,9 @@ public class GraphActivity extends AppCompatActivity {
     }
 
     void ShowTodayData(){
-        Date fechaActual = new Date();
-
+        fechaActual = new Date();
+        startDate = fechaActual;
+        endDate = fechaActual;
         fechaInicio.setText(DateToString(fechaActual, "dd/MM/YYYY"));
         fechaFin.setText(DateToString(fechaActual, "dd/MM/YYYY"));
 
@@ -213,18 +251,18 @@ public class GraphActivity extends AppCompatActivity {
     }
 
     void ShowWeekData(){
-        Date fechaActual = new Date();
+        fechaActual = new Date();
 
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(fechaActual);
         calendar.add(Calendar.DAY_OF_MONTH, Calendar.SUNDAY - calendar.get(Calendar.DAY_OF_WEEK));
 
-        Date startDate = calendar.getTime();
+        startDate = calendar.getTime();
 
         calendar.setTime(fechaActual);
         calendar.add(Calendar.DAY_OF_MONTH, Calendar.SUNDAY +(Calendar.SATURDAY - calendar.get(Calendar.DAY_OF_WEEK) - 1));
 
-        Date endDate = calendar.getTime();
+        endDate = calendar.getTime();
 
         fechaInicio.setText(DateToString(startDate,"dd/MM/YYYY"));
         fechaFin.setText(DateToString(endDate,"dd/MM/YYYY"));
@@ -232,7 +270,7 @@ public class GraphActivity extends AppCompatActivity {
     }
 
     void ShowMonthData(){
-        Date fechaActual = new Date();
+        fechaActual = new Date();
 
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(fechaActual);
@@ -240,17 +278,48 @@ public class GraphActivity extends AppCompatActivity {
         calendar.set(Calendar.DAY_OF_MONTH,
                 calendar.getActualMinimum(Calendar.DAY_OF_MONTH));
 
-        Date startDate = calendar.getTime();
+        startDate = calendar.getTime();
 
         calendar.setTime(fechaActual);
         //calendar.add(Calendar.DAY_OF_MONTH, Calendar.SUNDAY +(Calendar.SATURDAY - calendar.get(Calendar.DAY_OF_WEEK) - 1));
         calendar.set(Calendar.DAY_OF_MONTH,
                 calendar.getActualMaximum(Calendar.DAY_OF_MONTH));
-        Date endDate = calendar.getTime();
+        endDate = calendar.getTime();
 
         fechaInicio.setText(DateToString(startDate,"dd/MM/YYYY"));
         fechaFin.setText(DateToString(endDate,"dd/MM/YYYY"));
         ChartCalculator(startDate,endDate);
+    }
+
+    void ChooseDate(final TextView txtDate, final boolean x){
+        Calendar c = Calendar.getInstance();
+        int day = c.get(Calendar.DAY_OF_MONTH);
+        int month = c.get(Calendar.MONTH);
+        int year= c.get(Calendar.YEAR);
+
+        datePickerDialog = new DatePickerDialog(GraphActivity.this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                Calendar calendar = Calendar.getInstance();
+                calendar.set(Calendar.YEAR,year);
+                calendar.set(Calendar.MONTH,month);
+                calendar.set(Calendar.DAY_OF_MONTH,dayOfMonth);
+                auxCalendar = calendar;
+                //TODO revisar fechas
+                txtDate.setText(DateToString(calendar.getTime(), "dd/MM/YYYY"));
+                //auxCalendar.set(Calendar.YEAR,year);
+                //auxCalendar.set(Calendar.MONTH,month);
+                //auxCalendar.set(Calendar.DAY_OF_MONTH,dayOfMonth);
+                if(x){
+                    ChartCalculator(auxCalendar.getTime(),endDate);
+                }else{
+                    ChartCalculator(startDate,auxCalendar.getTime());
+                }
+            }
+        },year,month,day);
+
+        datePickerDialog.show();
+
     }
 
     public boolean IsAfterDate(Date date1, Date date2){

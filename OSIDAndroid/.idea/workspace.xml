@@ -7,7 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="581d87a7-e8cf-460a-a1ac-ed7d6d7dc83c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/osid/GraphActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/osid/GraphActivity.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -44,34 +44,28 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/osid/SettingsActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4008">
-              <caret line="211" column="37" lean-forward="true" selection-start-line="211" selection-start-column="37" selection-end-line="211" selection-end-column="37" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/osid/GraphActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1152">
-              <caret line="281" lean-forward="true" selection-start-line="281" selection-end-line="281" />
+            <state relative-caret-position="616">
+              <caret line="315" column="69" selection-start-line="315" selection-start-column="69" selection-end-line="315" selection-end-column="69" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1774#1926#0" expanded="true" />
-                <element signature="e#1925#1926#0" expanded="true" />
-                <element signature="e#1976#2127#0" expanded="true" />
-                <element signature="e#2126#2127#0" expanded="true" />
-                <element signature="e#2174#2326#0" expanded="true" />
-                <element signature="e#2325#2326#0" expanded="true" />
-                <element signature="e#3252#3253#0" expanded="true" />
-                <element signature="e#3282#3283#0" expanded="true" />
+                <element signature="e#1943#2095#0" expanded="true" />
+                <element signature="e#2094#2095#0" expanded="true" />
+                <element signature="e#2137#2288#0" expanded="true" />
+                <element signature="e#2287#2288#0" expanded="true" />
+                <element signature="e#2327#2479#0" expanded="true" />
+                <element signature="e#2478#2479#0" expanded="true" />
+                <element signature="e#2603#2780#0" expanded="true" />
+                <element signature="e#2779#2780#0" expanded="true" />
+                <element signature="e#2892#3138#0" expanded="true" />
+                <element signature="e#3137#3138#0" expanded="true" />
+                <element signature="method#TestData#0;class#GraphActivity#0" />
+                <element signature="method#Initialization#0;class#GraphActivity#0" />
                 <element signature="method#ChartCalculator#0;class#GraphActivity#0" />
                 <element signature="e#4129#5386#0" />
-                <element signature="method#ShowTodayData#0;class#GraphActivity#0" />
-                <element signature="method#ShowWeekData#0;class#GraphActivity#0" />
-                <element signature="method#ShowMonthData#0;class#GraphActivity#0" />
+                <element signature="e#10220#10796#0" expanded="true" />
+                <element signature="e#10795#10796#0" expanded="true" />
                 <element signature="method#IsAfterDate#0;class#GraphActivity#0" />
                 <element signature="method#IsAfterDate#1;class#GraphActivity#0" />
                 <element signature="method#StringToDate#0;class#GraphActivity#0" />
@@ -79,16 +73,6 @@
               </folding>
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_settings.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="246">
-              <caret line="197" column="28" lean-forward="true" selection-start-line="197" selection-start-column="28" selection-end-line="197" selection-end-column="28" />
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer2" />
         </entry>
       </file>
     </leaf>
@@ -165,16 +149,15 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/osid/DeviceListAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/osid/SettingsActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_graph.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/osid/GraphActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_settings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/osid/GraphActivity.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="976" />
-    <option name="height" value="1056" />
+    <option name="x" value="953" />
+    <option name="width" value="974" />
+    <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -370,7 +353,7 @@
     <layout>
       <window_info id="simpleUML" />
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.49939248" visible="true" weight="0.14605543" />
+      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.49939248" visible="true" weight="0.14605543" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Build Variants" order="4" sideWeight="0.50060755" side_tool="true" weight="0.21061946" />
@@ -385,7 +368,7 @@
       <window_info anchor="bottom" id="Event Log" order="4" sideWeight="0.5020649" side_tool="true" weight="0.4799514" />
       <window_info anchor="bottom" id="Build" order="5" sideWeight="0.49793512" weight="0.23086269" />
       <window_info anchor="bottom" id="Android Profiler" order="6" sideWeight="0.49970502" weight="0.32928312" />
-      <window_info anchor="bottom" id="Run" order="7" sideWeight="0.49970502" weight="0.32928312" />
+      <window_info anchor="bottom" id="Run" order="7" sideWeight="0.49970502" weight="0.32887402" />
       <window_info anchor="bottom" id="Debug" order="8" sideWeight="0.49970502" weight="0.3304982" />
       <window_info anchor="bottom" id="Find" order="9" visible="true" weight="0.32928312" />
       <window_info anchor="bottom" id="Messages" order="10" />
@@ -438,7 +421,6 @@
     </option>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/build/generated/ap_generated_sources/debug/out/customfonts/EditText_Roboto_Regular.java" />
     <entry file="file://$PROJECT_DIR$/app/build/generated/ap_generated_sources/debug/out/customfonts/EditText_Roboto_Bold.java" />
     <entry file="file://$PROJECT_DIR$/app/build/generated/ap_generated_sources/debug/out/customfonts/TextViewSFProDisplayThinItalic.java" />
     <entry file="file://$PROJECT_DIR$/app/build/generated/ap_generated_sources/debug/out/customfonts/MyTextView_Roboto_Italic.java" />
@@ -639,14 +621,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_graph.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="85" selection-start-line="85" selection-end-line="85" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/osid/GLOBAL/GLOBAL.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -658,32 +632,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/osid/GraphActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/osid/SettingsActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1152">
-          <caret line="281" lean-forward="true" selection-start-line="281" selection-end-line="281" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1774#1926#0" expanded="true" />
-            <element signature="e#1925#1926#0" expanded="true" />
-            <element signature="e#1976#2127#0" expanded="true" />
-            <element signature="e#2126#2127#0" expanded="true" />
-            <element signature="e#2174#2326#0" expanded="true" />
-            <element signature="e#2325#2326#0" expanded="true" />
-            <element signature="e#3252#3253#0" expanded="true" />
-            <element signature="e#3282#3283#0" expanded="true" />
-            <element signature="method#ChartCalculator#0;class#GraphActivity#0" />
-            <element signature="e#4129#5386#0" />
-            <element signature="method#ShowTodayData#0;class#GraphActivity#0" />
-            <element signature="method#ShowWeekData#0;class#GraphActivity#0" />
-            <element signature="method#ShowMonthData#0;class#GraphActivity#0" />
-            <element signature="method#IsAfterDate#0;class#GraphActivity#0" />
-            <element signature="method#IsAfterDate#1;class#GraphActivity#0" />
-            <element signature="method#StringToDate#0;class#GraphActivity#0" />
-            <element signature="method#DateToString#0;class#GraphActivity#0" />
-          </folding>
+        <state relative-caret-position="48">
+          <caret line="59" column="47" lean-forward="true" selection-start-line="59" selection-start-column="47" selection-end-line="59" selection-end-column="47" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_graph.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="85" selection-start-line="85" selection-end-line="85" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_settings.xml">
       <provider selected="true" editor-type-id="text-editor">
@@ -693,10 +655,37 @@
       </provider>
       <provider editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/osid/SettingsActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_glucometer.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/osid/GraphActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4008">
-          <caret line="211" column="37" lean-forward="true" selection-start-line="211" selection-start-column="37" selection-end-line="211" selection-end-column="37" />
+        <state relative-caret-position="616">
+          <caret line="315" column="69" selection-start-line="315" selection-start-column="69" selection-end-line="315" selection-end-column="69" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1943#2095#0" expanded="true" />
+            <element signature="e#2094#2095#0" expanded="true" />
+            <element signature="e#2137#2288#0" expanded="true" />
+            <element signature="e#2287#2288#0" expanded="true" />
+            <element signature="e#2327#2479#0" expanded="true" />
+            <element signature="e#2478#2479#0" expanded="true" />
+            <element signature="e#2603#2780#0" expanded="true" />
+            <element signature="e#2779#2780#0" expanded="true" />
+            <element signature="e#2892#3138#0" expanded="true" />
+            <element signature="e#3137#3138#0" expanded="true" />
+            <element signature="method#TestData#0;class#GraphActivity#0" />
+            <element signature="method#Initialization#0;class#GraphActivity#0" />
+            <element signature="method#ChartCalculator#0;class#GraphActivity#0" />
+            <element signature="e#4129#5386#0" />
+            <element signature="e#10220#10796#0" expanded="true" />
+            <element signature="e#10795#10796#0" expanded="true" />
+            <element signature="method#IsAfterDate#0;class#GraphActivity#0" />
+            <element signature="method#IsAfterDate#1;class#GraphActivity#0" />
+            <element signature="method#StringToDate#0;class#GraphActivity#0" />
+            <element signature="method#DateToString#0;class#GraphActivity#0" />
+          </folding>
         </state>
       </provider>
     </entry>
