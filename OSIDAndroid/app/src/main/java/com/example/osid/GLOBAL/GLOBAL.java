@@ -1,5 +1,6 @@
 package com.example.osid.GLOBAL;
 
+import com.example.osid.POJOs.Bluetooth;
 import com.example.osid.POJOs.Glucose;
 import com.example.osid.POJOs.Insuline;
 import com.example.osid.POJOs.User;
@@ -11,4 +12,5 @@ public class GLOBAL {
     public final static User user = new User();
     public final static ArrayList<Glucose> GLUCOSE_ARRAY_LIST = new ArrayList<Glucose>();
     public final static ArrayList<Insuline> INSULINE_ARRAY_LIST = new ArrayList<Insuline>();
+    public final static Bluetooth bluetoothDevice = new Bluetooth();
 }

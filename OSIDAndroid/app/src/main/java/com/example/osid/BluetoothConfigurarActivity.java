@@ -15,6 +15,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.osid.GLOBAL.GLOBAL;
+
 import java.util.ArrayList;
 import java.util.Set;
 
@@ -64,9 +66,12 @@ public class BluetoothConfigurarActivity extends AppCompatActivity {
             // Obtener la dirección MAC del dispositivo, que son los últimos 17 caracteres en la vista
             String info = ((TextView) v).getText().toString();
             String address = info.substring(info.length() - 17);
-            Intent i = new Intent(BluetoothConfigurarActivity.this, GlucometerActivity.class);
-            i.putExtra(EXTRA_DEVICE_ADDRESS, address);
+            GLOBAL.bluetoothDevice.setDeviceName(info);
+            GLOBAL.bluetoothDevice.setMAC(address);
+
+            Intent i = new Intent(BluetoothConfigurarActivity.this, MainActivity.class);
             startActivity(i);
+            Toast.makeText(BluetoothConfigurarActivity.this, "Se ha guardado tu preferencia", Toast.LENGTH_SHORT).show();
         }
     };
 
