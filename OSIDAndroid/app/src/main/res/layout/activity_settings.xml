@@ -75,7 +75,7 @@
                     android:layout_gravity="center"
                     android:background="@android:color/transparent"
                     android:onClick="ConfigurarBluetooth"
-                    android:src="@drawable/ic_network_speed" />
+                    android:src="@drawable/ic_network_check_black_24dp" />
 
                 <com.example.osid.MyTextView_Roboto_Regular
                     android:layout_width="wrap_content"
@@ -122,7 +122,7 @@
 
                 <ImageButton
                     android:id="@+id/CualquierOtro"
-                    android:onClick=""
+                    android:onClick="OtrosAjustes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"

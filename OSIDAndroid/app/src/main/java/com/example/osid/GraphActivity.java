@@ -119,7 +119,7 @@ public class GraphActivity extends AppCompatActivity {
         });
 
         //TODO Borrar
-        TestData();
+        //TestData();
         Initialization();
     }
     void TestData(){

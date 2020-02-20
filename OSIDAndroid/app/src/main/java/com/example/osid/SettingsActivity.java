@@ -59,7 +59,7 @@ public class SettingsActivity extends AppCompatActivity implements CompoundButto
 
 
     public void OtrosAjustes(View view) {
-        Intent i = new Intent(this, BluetoothConfigurarActivity.class);
+        Intent i = new Intent(this, OtherSettigsActivity.class);
         startActivity(i);
     }
 }
