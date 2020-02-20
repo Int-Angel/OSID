@@ -125,13 +125,15 @@
                                                     android:layout_height="200dp"
                                                     android:src="@drawable/blue_circle" />
 
-                                                <com.example.osid.MyTextView_Roboto_Regular
+                                                <EditText
                                                     android:id="@+id/basal1_function_ID"
                                                     android:layout_width="wrap_content"
                                                     android:layout_height="wrap_content"
                                                     android:layout_centerHorizontal="true"
                                                     android:layout_centerVertical="true"
-                                                    android:text="18 U"
+                                                    android:text="18"
+                                                    android:inputType="numberDecimal"
+                                                    android:background="@android:color/transparent"
                                                     android:textColor="@color/blue"
                                                     android:textSize="35sp" />
                                             </RelativeLayout>
@@ -267,26 +269,20 @@
                                                 android:layout_height="200dp"
                                                 android:src="@drawable/blue_circle" />
 
-                                            <com.example.osid.MyTextView_Roboto_Regular
+                                            <EditText
                                                 android:id="@+id/basal2_functions_ID"
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="wrap_content"
                                                 android:layout_centerHorizontal="true"
                                                 android:layout_centerVertical="true"
-                                                android:text="18 U"
+                                                android:background="@android:color/transparent"
+                                                android:text="18"
                                                 android:textColor="@color/blue"
+                                                android:inputType="numberDecimal"
                                                 android:textSize="35sp" />
                                         </RelativeLayout>
 
-                                        <TextView
-                                            android:id="@+id/lastRegID"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_gravity="center"
-                                            android:layout_marginTop="-23dp"
-                                            android:text=""
-                                            android:textColor="@color/red"
-                                            android:textSize="14dp" />
+
 
                                     </LinearLayout>
 
@@ -321,7 +317,18 @@
 
                             </LinearLayout>
 
-
+                            <TextView
+                                android:id="@+id/lastRegID"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="-23dp"
+                                android:paddingLeft="8dp"
+                                android:visibility="invisible"
+                                android:text=""
+                                android:background="@drawable/blue_rect"
+                                android:textColor="@color/white"
+                                android:textSize="14dp" />
                             <Button
                                 android:id="@+id/inyectarButtonID"
                                 android:layout_width="150dp"
