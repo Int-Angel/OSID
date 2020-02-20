@@ -315,10 +315,29 @@ public class GraphActivity extends AppCompatActivity {
                 }else{
                     ChartCalculator(startDate,auxCalendar.getTime());
                 }
+                RevisarFechas();
             }
         },year,month,day);
 
         datePickerDialog.show();
+
+    }
+
+    public void RevisarFechas(){
+        if(endDate.before(startDate)){
+            fechaFin.setTextColor(getColor(R.color.red));
+
+        }else{
+            fechaFin.setTextColor(getColor(R.color.txt_color));
+
+        }
+        if(startDate.after(endDate)){
+            fechaInicio.setTextColor(getColor(R.color.red));
+
+        }else{
+            fechaInicio.setTextColor(getColor(R.color.txt_color));
+
+        }
 
     }
 
