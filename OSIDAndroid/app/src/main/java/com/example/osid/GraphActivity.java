@@ -156,39 +156,6 @@ public class GraphActivity extends AppCompatActivity {
 
         String dateFormat = "YYYYMMdd";
 
-        //List<Integer> removeIndexInsulines = new ArrayList<>();
-
-        /*List<Insuline> removeInsulines = new ArrayList<>();
-        SimpleDateFormat dateFormat1 = new SimpleDateFormat(dateFormat);
-        for(int i = 0; i < insulines.size();i++){
-            if(StringToDate(DateToString(insulines.get(i).getFecha(),dateFormat),dateFormat).before(startDateFinal) || StringToDate(DateToString(insulines.get(i).getFecha(),dateFormat),dateFormat).after(endDateFinal)){
-                removeInsulines.add(insulines.get(i));
-            }
-        }
-        for(int i = 0; i<removeInsulines.size();i++){
-            try{
-                insulines.remove(removeInsulines.get(i));
-            }catch (Exception e){
-                break;
-            }
-        }
-
-        //List<Integer> removeIndexGlucoses = new ArrayList<>();
-        List<Glucose> removeGlucose = new ArrayList<>();
-        for(int i = 0; i < glucoses.size();i++){
-            if(glucoses.get(i).getFecha().before(startDateFinal) || glucoses.get(i).getFecha().after(endDateFinal)){
-                removeGlucose.add(glucoses.get(i));
-            }
-        }
-        for(int i = 0; i<removeGlucose.size();i++){
-            try{
-                glucoses.remove(removeGlucose.get(i));
-            }catch (Exception e ){
-                break;
-            }
-        }*/
-
-
         for(Insuline dataSet : insulines){
             if(IsBeforeDate(dataSet.getFecha(),endDate) && IsAfterDate(dataSet.getFecha(),startDate)){
                 insulinaEntries.add(new Entry(dataSet.getFecha().getTime(),dataSet.getInsuline()));
@@ -311,10 +278,13 @@ public class GraphActivity extends AppCompatActivity {
                 //auxCalendar.set(Calendar.MONTH,month);
                 //auxCalendar.set(Calendar.DAY_OF_MONTH,dayOfMonth);
                 if(x){
-                    ChartCalculator(auxCalendar.getTime(),endDate);
+                    startDate = auxCalendar.getTime();
+                    //ChartCalculator(auxCalendar.getTime(),endDate);
                 }else{
-                    ChartCalculator(startDate,auxCalendar.getTime());
+                    endDate = auxCalendar.getTime();
+                    //ChartCalculator(startDate,auxCalendar.getTime());
                 }
+                ChartCalculator(startDate,endDate);
                 RevisarFechas();
             }
         },year,month,day);
