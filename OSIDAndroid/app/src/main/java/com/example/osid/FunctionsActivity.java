@@ -153,10 +153,11 @@ public class FunctionsActivity extends AppCompatActivity {
             long millisNow = date.getTime();
 
             long transcurridoTime = millisNow - millisReg;
-            Toast.makeText(FunctionsActivity.this, "Tiempo transcurrido desde la ultima inyeccion:" + transcurridoTime, Toast.LENGTH_SHORT).show();
+            Toast.makeText(FunctionsActivity.this, "Tiempo transcurrido desde la ultima inyeccion:" + transcurridoTime/1000 + "s ", Toast.LENGTH_SHORT).show();
 
             if(transcurridoTime < 60000)
             {
+                InyeccionEnProceso();
                 inyectarButton.setEnabled(false);
                 inyectarButton.setBackgroundColor(Color.GRAY);
                 lastReg.setText("Inyeccion en Proceso a "+dbcontroller.GetArrayInsuline().get(size-1).getFecha().toString());
@@ -167,6 +168,8 @@ public class FunctionsActivity extends AppCompatActivity {
         }
 
     }
+
+
 
     void AddBasal(int n) {
         if (activeBasal.isChecked()) {
@@ -195,8 +198,13 @@ public class FunctionsActivity extends AppCompatActivity {
     }
 
     void SubstractInsuline(BigDecimal n) {
-        currentInsuline = currentInsuline.subtract(n);
-        currentInsuline_txt.setText(currentInsuline + " U");
+        BigDecimal temp = currentInsuline;
+        temp.subtract(n);
+        if(temp.floatValue() > 0)
+        {
+            currentInsuline = currentInsuline.subtract(n);
+            currentInsuline_txt.setText(currentInsuline + " U");
+        }
     }
 
 
@@ -205,12 +213,16 @@ public class FunctionsActivity extends AppCompatActivity {
         Date date = new Date();
         newInsuline.setFecha(date);
         newInsuline.setInsuline(currentInsuline.floatValue());
+        dbcontroller.InsertInsuline(newInsuline);
+        InyeccionEnProceso();
+    }
+
+    private void InyeccionEnProceso() {
         inyectarButton.setEnabled(false);
         inyectarButton.setBackgroundColor(Color.GRAY);
-
-        dbcontroller.InsertInsuline(newInsuline);
         int size = dbcontroller.GetArrayInsuline().size();
-        lastReg.setText("Inyeccion en Proceso a "+dbcontroller.GetArrayInsuline().get(size-1).getFecha().toString());
+        lastReg.setVisibility(View.VISIBLE);
+        lastReg.setText("Inyeccion en Proceso a "+dbcontroller.GetArrayInsuline().get(size-1).getFecha().toString()+" "+dbcontroller.GetArrayInsuline().get(size-1).getInsuline()+" U");
     }
 
 
