@@ -29,7 +29,11 @@ public class MainActivity extends AppCompatActivity {
     EditText basal;
     Switch activeBasal;
     MyTextView_Roboto_Bold time, basalPerHour;
+<<<<<<< HEAD
     TextView bluetoothStatuslbl;
+=======
+    TextView insulinaRestante;
+>>>>>>> 64e5babce887f473f7cca71ccedf0c1ade263c20
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,12 +58,16 @@ public class MainActivity extends AppCompatActivity {
         time = findViewById(R.id.txtview_time_basal_per_hour_main);
         basalPerHour = findViewById(R.id.txtview_basal_per_hour_main);
 
+<<<<<<< HEAD
 
         //------------------------BLUETOOTH INFO---------------------------------------//
         bluetoothStatuslbl = findViewById(R.id.bluetoothStatuslbl_main_ID);
         bluetoothStatuslbl.setText("Sin Conexion");
         bluetoothStatuslbl.setTextColor(getColor(R.color.red));
         //-----------------------------------------------------------------------------//
+=======
+        insulinaRestante = findViewById(R.id.txtview_insulina_restante);
+>>>>>>> 64e5babce887f473f7cca71ccedf0c1ade263c20
 
         activeBasal.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override

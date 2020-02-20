@@ -19,7 +19,7 @@ public class DBCREATOR extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(String.format("CREATE TABLE IF NOT EXISTS %s(Id_Usuario INTEGER PRIMARY KEY AUTOINCREMENT, Nombre TEXT,PrimerApellido TEXT,SegundoApellido TEXT,Edad INTEGER, Peso FLOAT, Basal FLOAT, Genero BOOLEAN, PGPU FLOAT)",TABLA_USUARIO));
+        db.execSQL(String.format("CREATE TABLE IF NOT EXISTS %s(Id_Usuario INTEGER PRIMARY KEY AUTOINCREMENT, Nombre TEXT,PrimerApellido TEXT,SegundoApellido TEXT,Edad INTEGER, Peso FLOAT, Basal FLOAT, Genero BOOLEAN, PGPU FLOAT, insulinaRestante FLOAT)",TABLA_USUARIO));
 
         db.execSQL(String.format("CREATE TABLE IF NOT EXISTS %s(Id_Glucose INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "FechaHora DATETIME, Glucosa INTEGER)",TABLA_GLUCOSE));
