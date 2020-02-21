@@ -13,4 +13,6 @@ public class GLOBAL {
     public final static ArrayList<Glucose> GLUCOSE_ARRAY_LIST = new ArrayList<Glucose>();
     public final static ArrayList<Insuline> INSULINE_ARRAY_LIST = new ArrayList<Insuline>();
     public final static Bluetooth bluetoothDevice = new Bluetooth();
+
+    public final static BluetoothVerifyConnection btconection = new BluetoothVerifyConnection();
 }

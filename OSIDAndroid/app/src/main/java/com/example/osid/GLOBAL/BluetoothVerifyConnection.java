@@ -4,6 +4,7 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.os.Handler;
+import android.widget.Toast;
 
 
 import java.io.IOException;
@@ -25,6 +26,7 @@ public class BluetoothVerifyConnection {
     public static final UUID BTMODULEUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
 
     String receivedText;
+
 
     public void VerifyConnection()
     {
@@ -58,7 +60,7 @@ public class BluetoothVerifyConnection {
 
 
     //Lo que hace connected thread
-    private class ConnectedThread extends Thread
+    public class ConnectedThread extends Thread
     {
         private final InputStream mmInStream;
         private final OutputStream mmOutStream;
@@ -74,6 +76,7 @@ public class BluetoothVerifyConnection {
             } catch (IOException e) { }
             mmInStream = tmpIn;
             mmOutStream = tmpOut;
+
         }
 
         public void run()
@@ -98,6 +101,7 @@ public class BluetoothVerifyConnection {
         {
             try {
                 mmOutStream.write(input.getBytes());
+                mmOutStream.close();
             }
             catch (IOException e)
             {
@@ -114,7 +118,7 @@ public class BluetoothVerifyConnection {
         {}
     }
 
-    public String ReadData()
+    /*public String ReadData()
     {
         bluetoothIn = new Handler() {
             public void handleMessage(android.os.Message msg) {
@@ -132,19 +136,5 @@ public class BluetoothVerifyConnection {
             }
         };
         return receivedText;
-    }
-
-
-    public String WriteData()
-    {
-        try {
-            mmOutStream.write(input.getBytes());
-        }
-        catch (IOException e)
-        {
-            //si no es posible enviar datos se cierra la conexión
-            Toast.makeText(getBaseContext(), "La Conexión fallo", Toast.LENGTH_LONG).show();
-            finish();
-        }
-    }
+    }*/
 }
