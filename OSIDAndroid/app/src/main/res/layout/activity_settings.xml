@@ -7,7 +7,8 @@
     android:layout_height="match_parent"
     tools:context=".SettingsActivity"
     android:background="@color/colorPrimary"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:ignore="ScrollViewCount">
 
     <LinearLayout
         android:id="@+id/toolbar"
@@ -38,109 +39,137 @@
         android:layout_marginLeft="15dp"
         android:background="@android:color/transparent"
         android:src="@drawable/ic_arrow_back_white_24dp" />
-    <LinearLayout
-        android:id="@+id/Arriba"
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_alignParentTop="true"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true">
+            <LinearLayout
+                android:id="@+id/Arriba"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
 
-        android:layout_marginLeft="10dp"
+                android:background="@drawable/background_roundedcorners_white"
+                android:orientation="vertical"
+                android:paddingTop="30dp"
+                android:paddingBottom="40dp">
 
-        android:layout_marginTop="60dp"
-        android:layout_marginRight="10dp"
-        android:background="@drawable/background_roundedcorners_white"
-        android:orientation="vertical"
-        android:paddingTop="30dp"
-        android:paddingBottom="40dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="110dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+
+                    android:paddingTop="30dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <ImageButton
+                            android:id="@+id/BluetoothSettings"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:background="@android:color/transparent"
+                            android:onClick="ConfigurarBluetooth"
+                            android:src="@drawable/ic_network_check_black_24dp" />
+
+                        <com.example.osid.MyTextView_Roboto_Regular
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+
+                            android:text="Configurar Modulo Bluetooth"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/Abajo"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/background_roundedcorners_white"
+                android:orientation="vertical"
+                android:paddingTop="50dp"
+                android:paddingBottom="40dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="110dp"
+                    android:gravity="center"
+
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <ImageButton
+                            android:id="@+id/CualquierOtro"
+                            android:onClick="OtrosAjustes"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:background="@android:color/transparent"
+                            android:src="@drawable/ic_settings_black_24dp" />
+
+                        <com.example.osid.MyTextView_Roboto_Regular
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="OtrosAjustes"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="5dp"
+                            android:text="Otros Ajustes"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="110dp"
-            android:gravity="center"
-            android:orientation="horizontal"
-
-            android:paddingTop="30dp">
-
-            <LinearLayout
+            android:layout_height="200dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/background_roundedcorners_white"
+            android:orientation="vertical"
+            android:paddingTop="50dp"
+            android:paddingBottom="40dp">
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <ImageButton
-                    android:id="@+id/BluetoothSettings"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:background="@android:color/transparent"
-                    android:onClick="ConfigurarBluetooth"
-                    android:src="@drawable/ic_network_check_black_24dp" />
-
-                <com.example.osid.MyTextView_Roboto_Regular
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-
-                    android:text="Configurar Modulo Bluetooth"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
-            </LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/Abajo"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-
-        android:layout_alignParentBottom="true"
-
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="42dp"
-
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="250dp"
-        android:background="@drawable/background_roundedcorners_white"
-        android:orientation="vertical"
-        android:paddingTop="50dp"
-        android:paddingBottom="40dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="110dp"
-            android:gravity="center"
-
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="0dp"
+                android:text="Unidades:"
+                android:textColor="@color/txt_color"
+                android:textSize="20sp"
+                android:layout_marginLeft="20dp"/>
+            <EditText
+                android:id="@+id/actualInsuline_txt_temp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:orientation="vertical">
+                android:text="300"
+                android:textAlignment="center"
+                android:inputType="numberDecimal"/>
 
-                <ImageButton
-                    android:id="@+id/CualquierOtro"
-                    android:onClick="OtrosAjustes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:background="@android:color/transparent"
-                    android:src="@drawable/ic_settings_black_24dp" />
-
-                <com.example.osid.MyTextView_Roboto_Regular
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="OtrosAjustes"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="5dp"
-                    android:text="Otros Ajustes"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
-            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
 
 
 </RelativeLayout>

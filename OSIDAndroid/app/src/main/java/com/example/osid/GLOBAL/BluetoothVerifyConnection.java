@@ -4,6 +4,7 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.os.Handler;
+import android.widget.Toast;
 
 
 import java.io.IOException;
@@ -135,7 +136,7 @@ public class BluetoothVerifyConnection {
     }
 
 
-    public String WriteData()
+    /*public String WriteData()
     {
         try {
             mmOutStream.write(input.getBytes());
@@ -146,5 +147,5 @@ public class BluetoothVerifyConnection {
             Toast.makeText(getBaseContext(), "La Conexión fallo", Toast.LENGTH_LONG).show();
             finish();
         }
-    }
+    }*/
 }

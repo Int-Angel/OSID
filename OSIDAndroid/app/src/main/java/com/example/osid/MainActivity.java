@@ -1,8 +1,11 @@
 package com.example.osid;
 
 import android.app.Activity;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -19,6 +22,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.osid.DB.DBCONTROLLER;
 import com.example.osid.GLOBAL.BluetoothVerifyConnection;
 import com.example.osid.GLOBAL.GLOBAL;
+import com.example.osid.Services.NotificationsSevice;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,17 +32,24 @@ public class MainActivity extends AppCompatActivity {
     MyTextView_Roboto_Regular name;
     EditText basal;
     Switch activeBasal;
+
     MyTextView_Roboto_Bold time, basalPerHour;
-<<<<<<< HEAD
+
     TextView bluetoothStatuslbl;
-=======
+
     TextView insulinaRestante;
->>>>>>> 64e5babce887f473f7cca71ccedf0c1ade263c20
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        CreateNotificationChannel();
+        Intent serviceIntent = new Intent(this, NotificationsSevice.class);
+        serviceIntent.putExtra("Food",false);
+        serviceIntent.putExtra("Insuline", false);
+        startService(serviceIntent);
 
         dbcontroller = new DBCONTROLLER(this);
 
@@ -58,16 +69,15 @@ public class MainActivity extends AppCompatActivity {
         time = findViewById(R.id.txtview_time_basal_per_hour_main);
         basalPerHour = findViewById(R.id.txtview_basal_per_hour_main);
 
-<<<<<<< HEAD
+
 
         //------------------------BLUETOOTH INFO---------------------------------------//
         bluetoothStatuslbl = findViewById(R.id.bluetoothStatuslbl_main_ID);
         bluetoothStatuslbl.setText("Sin Conexion");
         bluetoothStatuslbl.setTextColor(getColor(R.color.red));
         //-----------------------------------------------------------------------------//
-=======
         insulinaRestante = findViewById(R.id.txtview_insulina_restante);
->>>>>>> 64e5babce887f473f7cca71ccedf0c1ade263c20
+
 
         activeBasal.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -249,10 +259,41 @@ public class MainActivity extends AppCompatActivity {
         Initialitation();
         VerifyBTModuleConnection();
     }
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        startService(new Intent(this, NotificationsSevice.class));
+    }
 
     @Override
     public void onBackPressed()
     {
+    }
 
+    private void CreateNotificationChannel(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name_insulina = getString(R.string.channel_name_insulina);
+            String description_insulina = getString(R.string.channel_description_insulina);
+            int importance_insulina = NotificationManager.IMPORTANCE_HIGH;
+            NotificationChannel channel_insulina = new NotificationChannel(getString(R.string.CHANNEL_INSULINA_ID), name_insulina, importance_insulina);
+            channel_insulina.setDescription(description_insulina);
+
+            CharSequence name_repositorio = getString(R.string.channel_name_repositorio);
+            String description_repositorio = getString(R.string.channel_description_repositorio);
+            int importance_repositorio = NotificationManager.IMPORTANCE_HIGH;
+            NotificationChannel channel_repositorio = new NotificationChannel(getString(R.string.CHANNEL_REPOSITORIO_ID), name_repositorio, importance_repositorio);
+            channel_repositorio.setDescription(description_repositorio);
+
+            CharSequence name_comidas = getString(R.string.channel_name_comidas);
+            String description_comidas = getString(R.string.channel_description_comidas);
+            int importance_comidas = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel_comidas = new NotificationChannel(getString(R.string.CHANNEL_COMIDAS_ID), name_comidas, importance_comidas);
+            channel_comidas.setDescription(description_comidas);
+
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel_insulina);
+            notificationManager.createNotificationChannel(channel_repositorio);
+            notificationManager.createNotificationChannel(channel_comidas);
+        }
     }
 }
