@@ -101,7 +101,6 @@ public class BluetoothVerifyConnection {
         {
             try {
                 mmOutStream.write(input.getBytes());
-                mmOutStream.close();
             }
             catch (IOException e)
             {

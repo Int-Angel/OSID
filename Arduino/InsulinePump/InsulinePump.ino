@@ -55,10 +55,7 @@ void setup() {
 
 void loop() {
   ReadDataFromApp();
- 
-  
   /*
-  
   currentMillis = millis();
 
   //-----------------------------------------------------------------------//
@@ -84,35 +81,28 @@ void loop() {
 
 void ReadDataFromApp()
 {
-    if (ModBluetooth.available())  
+    if (ModBluetooth.available())  //Si ModBluetooth recebe algun dato...
     { 
         String tempString = "", newString = "";
-        tempString = ModBluetooth.readString(); 
-  
+        tempString = ModBluetooth.readString();  //tempString guarda el dato.
         Serial.println(tempString);
-        ModBluetooth.println(tempString);
-        
-        if(tempString[0] == 'B')//Basal
+        Serial.println("aa");
+        if(tempString[0] == 'B')//Basal 
         {
           for(int i = 1; i < tempString.length(); i++)
-          newString+= tempString[i];
+            newString+= tempString[i];
           unidades = newString.toFloat();
-            ModBluetooth.begin(9600);
-            Serial.flush();
-            ModBluetooth.flush();
-
         }
 
         
         else if (tempString[0] == 'I')//Insulina
         {
-          Serial.println("aaaaaa");
           for(int i = 1; i < tempString.length(); i++)
           newString+= tempString[i];
           InyectarInsulina(newString.toFloat());
-            ModBluetooth.begin(9600);
-            Serial.flush();
-            ModBluetooth.flush();
+            //ModBluetooth.begin(9600);
+            //Serial.flush();
+            //ModBluetooth.flush();
         }
     } 
 }
@@ -182,13 +172,16 @@ void InyectarInsulina(float unidades)
 
 
 
-
 void writeString(String stringData) { // Used to serially push out a String with Serial.write()
 Serial.flush();
   for (int i = 0; i < stringData.length(); i++)
   {
     Serial.write(stringData[i]);   // Push each char 1 by 1 on each loop pass
   }
+
+
+
+  
 }// end writeString
 
 
