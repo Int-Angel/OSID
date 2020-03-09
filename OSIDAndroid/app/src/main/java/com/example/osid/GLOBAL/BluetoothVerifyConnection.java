@@ -135,5 +135,22 @@ public class BluetoothVerifyConnection {
             }
         };
         return receivedText;
+<<<<<<< HEAD
+=======
+    }
+
+
+    /*public String WriteData()
+    {
+        try {
+            mmOutStream.write(input.getBytes());
+        }
+        catch (IOException e)
+        {
+            //si no es posible enviar datos se cierra la conexión
+            Toast.makeText(getBaseContext(), "La Conexión fallo", Toast.LENGTH_LONG).show();
+            finish();
+        }
+>>>>>>> 24c5b5238eb8181a4267d6eb97efade2636723b7
     }*/
 }

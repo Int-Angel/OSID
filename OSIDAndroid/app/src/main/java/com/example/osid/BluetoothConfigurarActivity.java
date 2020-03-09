@@ -78,7 +78,7 @@ public class BluetoothConfigurarActivity extends AppCompatActivity {
             String address = info.substring(info.length() - 17);
             GLOBAL.bluetoothDevice.setDeviceName(info);
 
-            if(address.equals("98:D3:32:31:5C:28"))
+            if(address.equals("98:D3:32:31:5C:28")|| address.equals("98:D3:31:FD:8A:47"))
             {
                 GLOBAL.bluetoothDevice.setMAC(address);
 

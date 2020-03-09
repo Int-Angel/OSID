@@ -81,26 +81,7 @@
                     android:layout_marginRight="10dp"/>
             </RelativeLayout>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <com.example.osid.MyTextView_Roboto_Regular
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="left"
-                    android:layout_marginLeft="20dp"
 
-                    android:text="Cambio catheter"
-                    android:textColor="@color/black"
-                    android:textSize="17sp" />
-
-                <Switch
-                    android:id="@+id/switch_notificaciones_cambio_catether"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="10dp"/>
-            </RelativeLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">

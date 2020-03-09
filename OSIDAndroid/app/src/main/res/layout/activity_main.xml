@@ -125,31 +125,34 @@
                     />
             </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Insulina restante: "
-                android:textColor="@color/white"
-                android:textSize="15sp"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="80dp"
-                android:background="@android:color/transparent"
+           <LinearLayout
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_alignParentRight="true"
+               android:layout_marginTop="10dp"
+              android:background="@drawable/background_rounded_left_corners"
+              >
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="Insulina restante: "
+                   android:textColor="@color/colorPrimary"
+                   android:textSize="15sp"
+                   android:background="@android:color/transparent"
+                   android:layout_marginLeft="8dp"
 
-                />
-            <TextView
-                android:id="@+id/txtview_insulina_restante"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="300"
-                android:textColor="@color/white"
-                android:textSize="15sp"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="40dp"
-                android:background="@android:color/transparent"
-
-                />
+                   />
+               <TextView
+                   android:id="@+id/txtview_insulina_restante"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="300"
+                   android:textColor="@color/colorPrimary"
+                   android:textSize="15sp"
+                   android:background="@android:color/transparent"
+                   android:layout_marginRight="30dp"
+                   />
+           </LinearLayout>
 
         </RelativeLayout>
 
@@ -298,10 +301,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Conectado/Desconectado"
-            android:layout_marginLeft="85dp"
-            android:drawableLeft="@drawable/ic_action_on">
-
-        </TextView>
+            android:drawableLeft="@drawable/ic_action_on"
+            android:layout_gravity="center"/>
     </LinearLayout>
 
 
