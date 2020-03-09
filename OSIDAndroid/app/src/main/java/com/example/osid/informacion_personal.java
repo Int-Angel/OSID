@@ -88,7 +88,7 @@ public class informacion_personal extends AppCompatActivity implements RadioGrou
                 if(!errors)
                 {
                     RegisterUser();
-                    Toast.makeText(informacion_personal.this, "vientos", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(informacion_personal.this, "vientos", Toast.LENGTH_SHORT).show();
                 }
 
             }

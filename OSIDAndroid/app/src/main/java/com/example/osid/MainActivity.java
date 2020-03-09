@@ -34,10 +34,10 @@ public class MainActivity extends AppCompatActivity {
     Switch activeBasal;
 
     MyTextView_Roboto_Bold time, basalPerHour;
-
     TextView bluetoothStatuslbl;
-
     TextView insulinaRestante;
+
+
 
 
     @Override
@@ -70,15 +70,12 @@ public class MainActivity extends AppCompatActivity {
         basalPerHour = findViewById(R.id.txtview_basal_per_hour_main);
 
 
-
         //------------------------BLUETOOTH INFO---------------------------------------//
         bluetoothStatuslbl = findViewById(R.id.bluetoothStatuslbl_main_ID);
-        bluetoothStatuslbl.setText("Sin Conexion");
-        bluetoothStatuslbl.setTextColor(getColor(R.color.red));
+        bluetoothStatuslbl.setText("Conectado");
+        bluetoothStatuslbl.setTextColor(getColor(R.color.colorAccent));
         //-----------------------------------------------------------------------------//
         insulinaRestante = findViewById(R.id.txtview_insulina_restante);
-
-
         activeBasal.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
@@ -213,12 +210,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void VerifyBTModuleConnection() {
-        BluetoothVerifyConnection bluetoothVerifyConnection = new BluetoothVerifyConnection();
+
         if(GLOBAL.bluetoothDevice.getMAC() != null)
         {
-            bluetoothVerifyConnection.VerifyConnection();
+            GLOBAL.btconection.VerifyConnection();
 
-            if(bluetoothVerifyConnection.isSuccessfull)
+            if(GLOBAL.btconection.isSuccessfull)
             {
                 bluetoothStatuslbl.setText("Enhorabuena! Estas Conectado");
                 bluetoothStatuslbl.setTextColor(getColor(R.color.colorAccent));

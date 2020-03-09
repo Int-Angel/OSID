@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.osid.DB.DBCONTROLLER;
+import com.example.osid.GLOBAL.BluetoothVerifyConnection;
 import com.example.osid.GLOBAL.GLOBAL;
 import com.example.osid.POJOs.Insuline;
 import com.example.osid.R;
@@ -155,7 +156,7 @@ public class FunctionsActivity extends AppCompatActivity {
             long transcurridoTime = millisNow - millisReg;
             Toast.makeText(FunctionsActivity.this, "Tiempo transcurrido desde la ultima inyeccion:" + transcurridoTime/1000 + "s ", Toast.LENGTH_SHORT).show();
 
-            if(transcurridoTime < 60000)
+            /*if(transcurridoTime < 60000)
             {
                 InyeccionEnProceso();
                 inyectarButton.setEnabled(false);
@@ -163,7 +164,7 @@ public class FunctionsActivity extends AppCompatActivity {
                 lastReg.setText("Inyeccion en Proceso a "+dbcontroller.GetArrayInsuline().get(size-1).getFecha().toString());
             }
 
-            else
+            else*/
                 inyectarButton.setEnabled(true);
         }
 
@@ -214,6 +215,10 @@ public class FunctionsActivity extends AppCompatActivity {
         newInsuline.setFecha(date);
         newInsuline.setInsuline(currentInsuline.floatValue());
         dbcontroller.InsertInsuline(newInsuline);
+
+        GLOBAL.btconection.MyConexionBT.write("I"+currentInsuline.toString());
+        Toast.makeText(FunctionsActivity.this, "I"+currentInsuline.toString(), Toast.LENGTH_SHORT).show();
+
         InyeccionEnProceso();
     }
 

@@ -27,6 +27,7 @@ public class BluetoothVerifyConnection {
 
     String receivedText;
 
+
     public void VerifyConnection()
     {
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -59,7 +60,7 @@ public class BluetoothVerifyConnection {
 
 
     //Lo que hace connected thread
-    private class ConnectedThread extends Thread
+    public class ConnectedThread extends Thread
     {
         private final InputStream mmInStream;
         private final OutputStream mmOutStream;
@@ -75,6 +76,7 @@ public class BluetoothVerifyConnection {
             } catch (IOException e) { }
             mmInStream = tmpIn;
             mmOutStream = tmpOut;
+
         }
 
         public void run()
@@ -115,7 +117,7 @@ public class BluetoothVerifyConnection {
         {}
     }
 
-    public String ReadData()
+    /*public String ReadData()
     {
         bluetoothIn = new Handler() {
             public void handleMessage(android.os.Message msg) {
@@ -133,6 +135,8 @@ public class BluetoothVerifyConnection {
             }
         };
         return receivedText;
+<<<<<<< HEAD
+=======
     }
 
 
@@ -147,5 +151,6 @@ public class BluetoothVerifyConnection {
             Toast.makeText(getBaseContext(), "La Conexión fallo", Toast.LENGTH_LONG).show();
             finish();
         }
+>>>>>>> 24c5b5238eb8181a4267d6eb97efade2636723b7
     }*/
 }
