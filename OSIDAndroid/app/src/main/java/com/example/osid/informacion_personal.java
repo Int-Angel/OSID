@@ -26,6 +26,7 @@ public class informacion_personal extends AppCompatActivity implements RadioGrou
     EditText ageEdit;
     EditText weightEdit;
     EditText basalEdit;
+    EditText PGPUtxt;
     Button registerInfo;
     RadioGroup genderGroup;
     String gender;
@@ -50,6 +51,7 @@ public class informacion_personal extends AppCompatActivity implements RadioGrou
         ageEdit = findViewById(R.id.age_lbl);
         weightEdit = findViewById(R.id.weight_lbl);
         basalEdit = findViewById(R.id.basal_lbl);
+        PGPUtxt = findViewById(R.id.pgpu_lbl);
 
 
         //--------------GENERO-------------------------//
@@ -103,6 +105,8 @@ public class informacion_personal extends AppCompatActivity implements RadioGrou
         user.setPrimerApellido(lastName1Edit.getText().toString());
         user.setSegundoApellido(lastName2Edit.getText().toString());
         user.setBasal(Integer.parseInt(basalEdit.getText().toString()));
+        user.setInsulinaRestante(300);
+        user.setPGPU(Float.parseFloat(PGPUtxt.getText().toString()));
 
         if(gender == "Masculino")
             user.setGender(true);

@@ -46,7 +46,7 @@ public class FunctionsActivity extends AppCompatActivity {
     BigDecimal currentInsuline = new BigDecimal("0.1");
 
     Button inyectarButton;
-    ArrayList<Insuline> insulines;
+    //ArrayList<Insuline> insulines;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

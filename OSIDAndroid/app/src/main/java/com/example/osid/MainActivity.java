@@ -187,6 +187,8 @@ public class MainActivity extends AppCompatActivity {
 
         time.setText("Tiempo: " + 0 + " min"); //TODO con el arduino
         basalPerHour.setText(GLOBAL.user.getBasal() / 24 + " U/h");
+
+        insulinaRestante.setText(""+GLOBAL.user.getInsulinaRestante());
     }
 
     void AddBasal(int n){

@@ -216,7 +216,7 @@
             android:textColor="@color/black">
 
             <EditText
-                android:id="@+id/promedioBasal_lbl"
+                android:id="@+id/pgpu_lbl"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="¿Cuanta glucosa te baja una unidad en promedio?"
