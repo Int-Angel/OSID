@@ -64,7 +64,7 @@ public class BluetoothVerifyConnection {
     {
         private final InputStream mmInStream;
         private final OutputStream mmOutStream;
-
+        public String dato;
         public ConnectedThread(BluetoothSocket socket)
         {
             InputStream tmpIn = null;
@@ -83,18 +83,19 @@ public class BluetoothVerifyConnection {
         {
             byte[] buffer = new byte[256];
             int bytes;
-
+            String readMessage = "";
             // Se mantiene en modo escucha para determinar el ingreso de datos
             while (true) {
                 try {
                     bytes = mmInStream.read(buffer);
-                    String readMessage = new String(buffer, 0, bytes);
+                     readMessage = new String(buffer, 0, bytes);
                     // Envia los datos obtenidos hacia el evento via handler
                     bluetoothIn.obtainMessage(handlerState, bytes, -1, readMessage).sendToTarget();
                 } catch (IOException e) {
                     break;
                 }
             }
+            dato = readMessage;
         }
         //Envio de trama
         public void write(String input)

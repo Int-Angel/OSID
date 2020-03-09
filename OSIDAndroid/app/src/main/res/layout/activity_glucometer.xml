@@ -170,13 +170,33 @@
                                                     android:textColor="@color/blue"
                                                     android:textSize="35sp" />
                                             </RelativeLayout>
-
-                                            <com.example.osid.MyTextView_Roboto_Bold
+                                            <com.example.osid.MyTextView_Roboto_Regular
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_centerHorizontal="true"
+                                                android:layout_centerVertical="true"
+                                                android:text="Insulina recomendada:"
+                                                android:layout_gravity="center"
+                                                android:textColor="@color/blue"
+                                                android:textSize="20sp"
+                                                android:layout_marginBottom="10dp"/>
+                                            <com.example.osid.MyTextView_Roboto_Regular
+                                                android:id="@+id/insulina_recomendada"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_centerHorizontal="true"
+                                                android:layout_centerVertical="true"
+                                                android:text="34 U"
+                                                android:layout_gravity="center"
+                                                android:textColor="@color/blue"
+                                                android:textSize="20sp"
+                                                android:layout_marginBottom="10dp"/>
+                                           <!-- <com.example.osid.MyTextView_Roboto_Bold
                                                 android:id="@+id/txtview_time_basal_per_hour_functions"
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="wrap_content"
                                                 android:layout_gravity="center"
-                                                android:layout_marginTop="-23dp"
+                                                android:layout_marginTop="-13dp"
                                                 android:text="Time: 48 min"
                                                 android:textColor="@color/blue"
                                                 android:textSize="14dp" />
@@ -188,7 +208,7 @@
                                                 android:layout_gravity="center"
                                                 android:text="0.75 U/h"
                                                 android:textColor="@color/blue"
-                                                android:textSize="14dp" />
+                                                android:textSize="14dp" /> -->
 
                                         </LinearLayout>
 
