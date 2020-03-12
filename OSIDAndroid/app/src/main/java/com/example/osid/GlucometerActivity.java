@@ -1,6 +1,7 @@
 package com.example.osid;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -13,12 +14,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.osid.GLOBAL.GLOBAL;
 
 public class GlucometerActivity extends AppCompatActivity {
-    ProgressBar progressBar;
-    TextView waitTime_txt;
-    TextView waitingGlucometer_lbl;
-    com.example.osid.MyTextView_Roboto_Regular glucosa, insulinaRecomendada;
-    LinearLayout glucoInfoLinearLayout;
-    ImageButton back;
+    static ProgressBar progressBar;
+    static TextView waitTime_txt;
+    static TextView waitingGlucometer_lbl;
+    static com.example.osid.MyTextView_Roboto_Regular glucosa, insulinaRecomendada;
+    static LinearLayout glucoInfoLinearLayout;
+    static ImageButton back;
+
+    private StringBuilder DataStringIN = new StringBuilder();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,32 +41,55 @@ public class GlucometerActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
-        GLOBAL.btconection.MyConexionBT.run();
-        ReceiveData(!GLOBAL.btconection.MyConexionBT.dato.equals(""));
+        MainActivity.btconection.bluetoothIn = new Handler(){
+            public void handleMessage(android.os.Message msg){
+                if(msg.what == MainActivity.btconection.handlerState){
+                    String readMessage = (String)msg.obj;
+
+                    DataStringIN.append(readMessage);
+
+                    int endOfLineIndex = DataStringIN.indexOf("#");
+
+                    if(endOfLineIndex > 0){
+                        String dataInPrint = DataStringIN.substring(0, endOfLineIndex);
+                        ReceiveData(dataInPrint);
+                        DataStringIN.delete(0,DataStringIN.length());
+
+                    }
+                }
+            }
+        };
+        //GLOBAL.btconection.MyConexionBT.run();
+       // waiting();
     }
 
-    public void ReceiveData(Boolean data)
+    public void ReceiveData(String data)
     {
-        if(data)
-        {
-            waitingGlucometer_lbl.setVisibility(View.INVISIBLE);
-            progressBar.setVisibility(View.INVISIBLE);
-            waitTime_txt.setVisibility(View.INVISIBLE);
+        //waitingGlucometer_lbl.setVisibility(View.INVISIBLE);
+        //progressBar.setVisibility(View.INVISIBLE);
+        //waitTime_txt.setVisibility(View.INVISIBLE);
+        //glucosa.setVisibility(View.VISIBLE);
+        //glucoInfoLinearLayout.setVisibility(View.VISIBLE);
+        float voltage = Float.parseFloat(data);
+        double glucose = CalculateGlucoseConcentration(voltage);
+        glucosa.setText(glucose + " mg/dl");
+        if(glucose> 100){
+            double  insulina = 0;
+            insulina = glucose - 100;
+            insulina = insulina/GLOBAL.user.getPGPU();
+            insulinaRecomendada.setText(insulina + " U");
+        }
+    }
 
-            glucosa.setText(GLOBAL.btconection.MyConexionBT.dato + " mg/dl");
-            if(Integer.parseInt(glucosa.getText().toString()) > 100){
-                float insulina = 0;
-                insulina = Integer.parseInt(glucosa.getText().toString()) - 100;
-                insulina = insulina/GLOBAL.user.getPGPU();
-                insulinaRecomendada.setText(insulina + " U");
-            }
-        }
-        else
-        {
-            waitingGlucometer_lbl.setVisibility(View.VISIBLE);
-            progressBar.setVisibility(View.VISIBLE);
-            waitTime_txt.setVisibility(View.VISIBLE);
-            glucoInfoLinearLayout.setVisibility(View.GONE);
-        }
+    public static void waiting(){
+        waitingGlucometer_lbl.setVisibility(View.VISIBLE);
+        progressBar.setVisibility(View.VISIBLE);
+        waitTime_txt.setVisibility(View.VISIBLE);
+        glucoInfoLinearLayout.setVisibility(View.GONE);
+    }
+
+    public double CalculateGlucoseConcentration(float voltage)
+    {
+        return (Math.round(Math.pow(((2347110.773 * Math.pow((18.06302774 * 0.001), (voltage)) + (2 * (4.65 - voltage))) / (8 * voltage)), 2.2f) + (10 * voltage) + 30 - voltage)) +16;
     }
 }

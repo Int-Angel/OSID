@@ -216,10 +216,23 @@ public class FunctionsActivity extends AppCompatActivity {
         newInsuline.setInsuline(currentInsuline.floatValue());
         dbcontroller.InsertInsuline(newInsuline);
 
-        GLOBAL.btconection.MyConexionBT.write("I"+currentInsuline.toString());
-        Toast.makeText(FunctionsActivity.this, "I"+currentInsuline.toString(), Toast.LENGTH_SHORT).show();
+        try
+        {
+            MainActivity.btconection.MyConexionBT.write("I"+currentInsuline.toString());
+            Toast.makeText(FunctionsActivity.this, "I"+currentInsuline.toString(), Toast.LENGTH_SHORT).show();
+        }
+        catch(Exception e)
+        {
+            Toast.makeText(this, "No se encontró conexión ", Toast.LENGTH_SHORT).show();
 
+        }
         InyeccionEnProceso();
+     /*   if(GLOBAL.VerifyBTModuleConnection())
+        {
+
+        }
+        else
+            Toast.makeText(this, "No se encontró conexión ", Toast.LENGTH_SHORT).show();*/
     }
 
     private void InyeccionEnProceso() {

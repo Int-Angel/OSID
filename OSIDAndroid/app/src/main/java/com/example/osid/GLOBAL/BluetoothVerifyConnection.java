@@ -7,6 +7,8 @@ import android.os.Handler;
 import android.widget.Toast;
 
 
+import com.example.osid.GlucometerActivity;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -16,10 +18,10 @@ import java.util.UUID;
 public class BluetoothVerifyConnection {
 
     public boolean isSuccessfull = false;
-    Handler bluetoothIn;
+    public Handler bluetoothIn;
 
     public StringBuilder DataStringIN = new StringBuilder();
-    final int handlerState = 0;
+    public final int handlerState = 0;
     public BluetoothAdapter bluetoothAdapter= null;
     public BluetoothSocket bluetoothSocket= null;
     public ConnectedThread MyConexionBT;
@@ -45,12 +47,16 @@ public class BluetoothVerifyConnection {
         {
             try{
                 bluetoothSocket.close();
+                isSuccessfull = false;
+                return;
+               // isSuccessfull = false;
             }
             catch(IOException e2)
             {}
         }
 
         MyConexionBT = new ConnectedThread(bluetoothSocket);
+        MyConexionBT.start();
     }
 
     private BluetoothSocket createBluetoothSocket(BluetoothDevice device) throws  IOException{
@@ -83,19 +89,18 @@ public class BluetoothVerifyConnection {
         {
             byte[] buffer = new byte[256];
             int bytes;
-            String readMessage = "";
             // Se mantiene en modo escucha para determinar el ingreso de datos
             while (true) {
                 try {
                     bytes = mmInStream.read(buffer);
-                     readMessage = new String(buffer, 0, bytes);
+                     String readMessage = new String(buffer, 0, bytes);
                     // Envia los datos obtenidos hacia el evento via handler
                     bluetoothIn.obtainMessage(handlerState, bytes, -1, readMessage).sendToTarget();
                 } catch (IOException e) {
-                    break;
+                    //break;
                 }
             }
-            dato = readMessage;
+
         }
         //Envio de trama
         public void write(String input)
@@ -105,8 +110,31 @@ public class BluetoothVerifyConnection {
             }
             catch (IOException e)
             {
+
             }
         }
+
+
+        /*public String ReadData()
+        {
+            bluetoothIn = new Handler() {
+                public void handleMessage(android.os.Message msg) {
+                    if (msg.what == handlerState) {
+                        String readMessage = (String) msg.obj;
+                        DataStringIN.append(readMessage);
+
+                        int endOfLineIndex = DataStringIN.indexOf("#");
+
+                        if (endOfLineIndex > 0) {
+                            receivedText = DataStringIN.substring(0, endOfLineIndex);
+                            DataStringIN.delete(0, DataStringIN.length());
+                        }
+                    }
+                }
+            };
+            GlucometerActivity.ReceiveData(receivedText);
+            return receivedText;
+        }*/
     }
 
     public void TerminarBluetooth()
@@ -117,6 +145,7 @@ public class BluetoothVerifyConnection {
         catch (IOException e2)
         {}
     }
+
 
     /*public String ReadData()
     {

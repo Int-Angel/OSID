@@ -14,5 +14,23 @@ public class GLOBAL {
     public final static ArrayList<Insuline> INSULINE_ARRAY_LIST = new ArrayList<Insuline>();
     public final static Bluetooth bluetoothDevice = new Bluetooth();
 
-    public final static BluetoothVerifyConnection btconection = new BluetoothVerifyConnection();
+
+
+
+
+
+   /* public static boolean VerifyBTModuleConnection() {
+
+        if(GLOBAL.bluetoothDevice.getMAC() != null)
+        {
+            GLOBAL.btconection.VerifyConnection();
+
+            if(GLOBAL.btconection.isSuccessfull)
+                return true;
+            else
+                return false;
+        }
+        else
+            return false;
+    }*/
 }

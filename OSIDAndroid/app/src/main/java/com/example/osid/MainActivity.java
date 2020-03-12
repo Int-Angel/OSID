@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     TextView bluetoothStatuslbl;
     TextView insulinaRestante;
 
-
+    public final static BluetoothVerifyConnection btconection = new BluetoothVerifyConnection();
 
 
     @Override
@@ -146,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         Initialitation();
-        VerifyBTModuleConnection();
+        //VerifyBTModuleConnection();
     }
 
 
@@ -186,6 +186,7 @@ public class MainActivity extends AppCompatActivity {
         basalPerHour.setText(GLOBAL.user.getBasal() / 24 + " U/h");
 
         insulinaRestante.setText(""+GLOBAL.user.getInsulinaRestante());
+        PrintConnectionStatus();
     }
 
     void AddBasal(int n){
@@ -209,23 +210,21 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void VerifyBTModuleConnection() {
+    private boolean VerifyBTModuleConnection() {
 
         if(GLOBAL.bluetoothDevice.getMAC() != null)
         {
-            GLOBAL.btconection.VerifyConnection();
+            btconection.VerifyConnection();
 
-            if(GLOBAL.btconection.isSuccessfull)
-            {
-                bluetoothStatuslbl.setText("Enhorabuena! Estas Conectado");
-                bluetoothStatuslbl.setTextColor(getColor(R.color.colorAccent));
-            }
+            if(btconection.isSuccessfull)
+            return true;
             else{
-                bluetoothStatuslbl.setText("Sin Conexion");
-                bluetoothStatuslbl.setTextColor(getColor(R.color.red));
+              return false;
             }
 
         }
+        else
+            return false;
     }
 
 
@@ -256,8 +255,21 @@ public class MainActivity extends AppCompatActivity {
     protected void onRestart() {
         super.onRestart();
         Initialitation();
-        VerifyBTModuleConnection();
     }
+
+    private void PrintConnectionStatus() {
+        if(VerifyBTModuleConnection())
+        {
+            bluetoothStatuslbl.setText("Enhorabuena! Estas Conectado");
+            bluetoothStatuslbl.setTextColor(getColor(R.color.colorAccent));
+        }
+        else
+        {
+            bluetoothStatuslbl.setText("Sin Conexion");
+            bluetoothStatuslbl.setTextColor(getColor(R.color.red));
+        }
+    }
+
     @Override
     protected void onDestroy(){
         super.onDestroy();
