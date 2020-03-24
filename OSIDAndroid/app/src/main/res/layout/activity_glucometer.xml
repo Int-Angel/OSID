@@ -83,6 +83,7 @@
                                 android:orientation="vertical">
 
                                 <TextView
+                                    android:id="@+id/txt1"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="10dp"
@@ -110,13 +111,13 @@
                                         android:paddingTop="10dp">
                                     </ProgressBar>
 
-                                    <TextView
+                                    <!--<TextView
                                         android:id="@+id/waitTimeID_glucometer"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginLeft="18dp"
                                         android:layout_marginTop="22dp"
-                                        android:text="5" />
+                                        android:text="5" />-->
                                 </RelativeLayout>
 
 
@@ -132,15 +133,16 @@
                                         android:layout_centerHorizontal="true"
                                         android:layout_centerVertical="true">
 
-                                        <Switch
+                                        <!--<Switch
                                             android:id="@+id/sw_active_basal_functions"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_alignParentRight="true"
                                             android:layout_marginRight="20dp"
-                                            android:checked="true" />
+                                            android:checked="true" />-->
 
                                         <LinearLayout
+                                            android:id="@+id/layout_glucose"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_centerHorizontal="true"
@@ -149,15 +151,11 @@
 
 
                                             <RelativeLayout
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content">
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                >
 
 
-                                                <ImageView
-                                                    android:layout_width="200dp"
-                                                    android:layout_height="200dp"
-                                                    android:src="@drawable/blue_circle"
-                                                    android:contentDescription="TODO" />
 
                                                 <com.example.osid.MyTextView_Roboto_Regular
                                                     android:id="@+id/basal1_function_ID"
@@ -165,7 +163,7 @@
                                                     android:layout_height="wrap_content"
                                                     android:layout_centerHorizontal="true"
                                                     android:layout_centerVertical="true"
-                                                    android:text="18 U"
+                                                    android:text="18 mg/dl"
                                                     android:textColor="@color/blue"
                                                     android:textSize="35sp" />
                                             </RelativeLayout>
@@ -211,7 +209,7 @@
 
                                         </LinearLayout>
 
-                                        <LinearLayout
+                                        <!--<LinearLayout
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_alignParentRight="true"
@@ -236,7 +234,7 @@
                                                 android:layout_marginBottom="3dp"
                                                 android:background="@android:color/transparent"
                                                 android:src="@drawable/ic_keyboard_arrow_down_black_32dp" />
-                                        </LinearLayout>
+                                        </LinearLayout>-->
                                     </RelativeLayout>
 
 

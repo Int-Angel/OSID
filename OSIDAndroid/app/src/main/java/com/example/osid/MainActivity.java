@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -146,6 +147,26 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         Initialitation();
+
+        MainActivity.btconection.bluetoothIn = new Handler(){
+            public void handleMessage(android.os.Message msg){
+                if(msg.what == MainActivity.btconection.handlerState){
+                    String readMessage = (String)msg.obj;
+
+                    //DataStringIN.append(readMessage);
+
+                    //int endOfLineIndex = DataStringIN.indexOf("#");
+
+                    /*if(endOfLineIndex > 0){
+                        String dataInPrint = DataStringIN.substring(0, endOfLineIndex);
+                        ReceiveData(dataInPrint);
+                        DataStringIN.delete(0,DataStringIN.length());
+
+                    }*/
+                }
+            }
+        };
+
         //VerifyBTModuleConnection();
     }
 
